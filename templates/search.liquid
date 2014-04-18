@@ -1,0 +1,61 @@
+<div id="crumbs" class="sixteen columns">
+    <a href="/" title="Home">Home</a>
+    &raquo;
+    Search
+</div><!-- #crumbs -->
+
+{% assign row_limit = 5 %}
+<div id="mm_search">
+    {% if search.performed %}
+        <h1 class="sixteen columns">You searched for <strong>{{search.terms | escape}}</strong></h1>
+        
+        {% paginate search.results by 20 %}
+            {% if search.results == empty %}
+                <div class="sixteen columns row formfields">
+                    <p class="row">We couldn't find any products to match your search terms - please try a different search.</p>
+                    <h4 class="row">Search for anything in our store:</h4>
+                    <form action="/search" class="inputrow">
+                        <label class="hoverlabel" for="q">Search</label>
+                        <input type="text" id="q" name="q" value="" x-webkit-speech />
+                        <input class="button altcolour normalwidth" type="submit" value="Search"/>
+                    </form>
+                </div>
+                
+                {% include 'notfound-products' %}
+                
+            {% else %}
+  				<div class="productlist">
+                {% for item in search.results %}
+                    {% if item.type %}
+                        {% include 'product-list-repeatable-item' with item %}
+                    {% else %}
+                  <div class="product page-block one-fifth column">
+                    {% unless forloop.last %}
+                    {% cycle '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '<div class="columnfluff"></div>', '' %}
+                    {% endunless %}
+                    <div class="imgcont"></div>
+                    <p class="title">{{ item.title | link_to: item.url }}</p>
+                    <a class="desc" href="{{ item.url }}">
+                      {% capture stripdesc %}{% include 'process-html-strip' with item.content %}{% endcapture %}
+                      {{ stripdesc | strip_html | truncate: 140 | highlight: search.terms }}
+                  	</a>
+                    <div class="price">{{ 'View page &rarr;' | link_to: item.url }}</div>
+                  </div>
+                  {% endif %}
+                  {% cycle '', '', '', '', '<div class="cf"></div>' %}
+                {% endfor %}
+                </div>
+            {% endif %}
+            <div class="sixteen columns">
+                {% include 'pagination' %}
+            </div>
+        {% endpaginate %}
+    {% else %}
+        <h6 class="sixteen columns middletext">Search for anything in our store:</h6>
+        <form class="middleit" action="/search">
+            <input type="text" name="q" class="middleit" placeholder="Search..." value="" x-webkit-speech />
+            <input class="button altcolour" type="submit" value="Search"/>
+        </form>
+        {% include 'notfound-products' %}
+    {% endif %}
+</div>

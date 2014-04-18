@@ -1,0 +1,9 @@
+<div class="pagesnippetwidget widget{% if template == 'index' %} one-third column{% endif %}">
+{% if pages[data].handle == '' %}&nbsp;
+{% else %}
+    <h6><a href="{{ pages[data].url }}">{{ pages[data].title }}</a></h6>
+    {% capture desc %}{% include 'process-html-strip' with pages[data].content %}{% endcapture %}
+    {{ desc | strip_html | truncate: 200 }}
+   <br /><a href="{{ pages[data].url }}"> more &rarr;</a>
+{% endif %}
+</div>

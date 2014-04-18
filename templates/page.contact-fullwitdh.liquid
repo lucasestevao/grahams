@@ -1,0 +1,157 @@
+<div id="crumbs" class="sixteen columns">
+    <a href="/" title="Home">Home</a>
+    &raquo;
+    <a href="{{ page.url }}">{{ page.title }}</a>
+</div><!-- #crumbs -->
+
+{% if settings.show_social_page %}
+<div class="social floating">
+    <span class="label">{{ settings.text_sharethis }}</span>
+    {% include 'social-sharing' %}
+</div>
+{% endif %}
+
+<!--<h1>{{ page.title }}</h1>-->
+
+
+<section class="sixteen columns">
+
+
+  <div class="pagesnippetwidget widget">
+    <h6 class="mm_h6">Contact form</h6>
+      {% include 'process-html' with page.content %}
+      
+      {% form 'contact' %}
+    
+      {% if form.posted_successfully? %}
+        <p class="success-msg">Thanks for contacting us! We'll get back to you as soon as possible.</p>
+      {% endif %}
+  
+      {% if form.errors %}
+          <ul>
+          {% for field in form.errors %}
+              <li class="error">{{ field | replace: 'body','Message' | capitalize }} - {{ form.errors.messages[field] }}</li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+      
+      <div class="mm_form_contact">
+        <div class="mm_linha ten columns">
+          <div class="mm_campo two columns">
+              <label for="contact_title" class="mm_blocklabel">Title:</label>
+              <select data-fieldname="Title" class="required mm_select" id="contact_title" name="contact[title]">            
+                  <option value="Mr">Mr</option>
+                  <option value="Miss">Miss</option>
+              </select>
+          </div>
+          <div class="mm_campo seven columns">
+              <label for="contact_full_name" class="hoverlabel">Full Name</label>
+              <input type="text" data-fieldname="Your full name" class="required fullwidth" id="contact_full_name" name="contact[full_name]" value="{{form.full_name}}"/>
+          </div>
+        </div>
+
+        <div class="mm_linha ten columns">
+          <div class="mm_campo five columns">
+              <label for="contact_email" class="hoverlabel">Email Address</label>
+              <input type="email" data-fieldname="Your email" class="required fullwidth" id="contact_email" class="email" name="contact[email]" value="{{form.email}}" />
+          </div>
+          <div class="mm_campo four columns ">
+              <label for="contact_telephone" class="hoverlabel">Telephone</label>
+              <input type="tel" data-fieldname="Your telephone number" class="required tel fullwidth" id="contact_telephone" class="tel" name="contact[telephone_number]" value="{{form.telephone_number}}" />
+          </div>
+        </div>
+
+        <div class="mm_linha ten columns">
+          <div class="mm_campo  five columns">
+              <label for="contact_store" class="mm_blocklabel">Select the store:</label>  
+              <select data-fieldname="Stores" class="required mm_select" id="contact_store" name="contact[store]">
+                  <option value="Dublin">Dublin</option>
+                  <option value="Kilkenny">Kilkenny</option>
+                  <option value="Naas">Naas</option>
+                  <option value="Carlow">Carlow</option>
+                  <option value="Clonmel">Clonmel</option>
+                  <option value="All">All</option>
+              </select>
+          </div>
+          <div class="mm_campo  four columns">
+              <label for="contact_topic" class="mm_blocklabel">Chosse Topic:</label>
+              <select data-fieldname="Topic" class="required mm_select" id="contact_topic" name="contact[topic]">                
+                  <option value="Product Enquired">Product Enquired</option>
+                  <option value="Suggestion">Suggestion</option>                
+              </select>
+          </div>
+        </div>
+
+        <div class="mm_linha ten columns">
+          <div class="mm_campo  ten columns">
+              <label for="message" class="mm_blocklabel">Send us a message:</label>
+              <textarea id="message" data-fieldname="Your message" class="required" name="contact[message]">{{form.message}}</textarea>
+          </div>
+        </div>                
+        <div class="mm_linha ten columns">
+          <div class="mm_campo  ten columns">
+            <input type="submit" class="button" value="Send" /> <br><br><br>
+          </div>
+        </div>                
+
+      </div>
+    {% endform %}
+    </div>    
+
+
+</section>
+
+<section class="sixteen columns mm_section_cinza">
+    <div class="pagesnippetwidget widget">
+        <h6 class="mm_h6">Opening Hours</h6>
+          <ul class="mm_list_horizontal">
+                <li><strong>Monday:</strong><br> 10:00 - 6:00</li>
+                <li><strong>Tuesday:</strong><br> 9:60 – 6:00</li>
+                <li><strong>Wednesday:</strong><br> 9:30 – 6:00</li>
+                <li><strong>Thursday:</strong><br> 9:30 – 8:00</li>
+                <li><strong>Friday:</strong><br> 9:30 – 6:00</li>
+                <li><strong>Saturday:</strong><br> 9:30 – 6:00</li>
+                <li><strong>Sunday:</strong><br> 12:30 – 5:30 <span class="mm_red">*</span></li>
+                
+            </ul>
+            <span class="mm_red">*All stores are open except Naas</span>
+    </div> 
+</section>
+
+<section class="sixteen columns">
+    <div class="pagesnippetwidget widget">
+        <h6 class="mm_h6">Grahams Stores</h6>
+            <ul class="mm_list_horizontal">
+                <li>
+                    <strong>Dublin:</strong><br>
+                    22 Exchequer Street<br>
+                    <a href="tel:016774645">{{ 'mm_icon_telephone.png' | asset_url | img_tag }} 016 774645 </a>
+                </li>
+                <li>
+                    <strong>Nass:</strong><br>
+                    6 North Main Street <br>
+                    <a href="tel:045899277">{{ 'mm_icon_telephone.png' | asset_url | img_tag }} 045 899277</a>
+                </li>
+                <li>
+                    <strong>Kilkenny:</strong><br>
+                    13 Hight Street <br>
+                    <a href="tel:0567721183">{{ 'mm_icon_telephone.png' | asset_url | img_tag }} 056 7721183</a>
+                </li>
+                <li>
+                    <strong>Kilkenny</strong><br>
+                    Friary Street<br>
+                    <a href="tel:0567721183">{{ 'mm_icon_telephone.png' | asset_url | img_tag }} 056 7721183</a> 
+                </li>
+                <li>
+                    <strong>Carlow</strong><br>
+                    143 Tullow Street<br>
+                    <a href="tel:0599133053">{{ 'mm_icon_telephone.png' | asset_url | img_tag }} 059 9133053</a> 
+                </li>                
+                <li>
+                    <strong>Clonmel</strong><br>
+                    64 O Connell Street<br>
+                    <a href="tel:0526182770">{{ 'mm_icon_telephone.png' | asset_url | img_tag }} 052 6182770</a>  
+                </li>                
+            </ul>
+    </div>
+</section>

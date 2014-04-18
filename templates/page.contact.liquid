@@ -1,0 +1,73 @@
+<div id="crumbs" class="sixteen columns">
+    <a href="/" title="Home">Home</a>
+    &raquo;
+    <a href="{{ page.url }}">{{ page.title }}</a>
+</div><!-- #crumbs -->
+
+{% if settings.show_social_page %}
+<div class="social floating">
+    <span class="label">{{ settings.text_sharethis }}</span>
+    {% include 'social-sharing' %}
+</div>
+{% endif %}
+
+<section class="sixteen columns">
+  <div class="pagesnippetwidget widget">
+    {% include 'process-html' with page.content %}
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="success-msg">Thanks for contacting us! We'll get back to you as soon as possible.</p>
+      {% endif %}
+      {% if form.errors %}
+        <ul>
+          {% for field in form.errors %}
+          <li class="error">{{ field | replace: 'body','Message' | capitalize }} - {{ form.errors.messages[field] }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Input Label
+            <input type="text" placeholder="large-12.columns" />
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-4 columns">
+          <label>Input Label
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Input Label
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <div class="row collapse">
+            <label>Input Label</label>
+            <div class="small-9 columns">
+              <input type="text" placeholder="small-9.columns" />
+            </div>
+            <div class="small-3 columns">
+              <span class="postfix">.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Select Box
+            <select>
+              <option value="husker">Husker</option>
+              <option value="starbuck">Starbuck</option>
+              <option value="hotdog">Hot Dog</option>
+              <option value="apollo">Apollo</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    {% endform %}
+	</div> 
+</section>

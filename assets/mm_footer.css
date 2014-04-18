@@ -1,0 +1,63 @@
+#pagefooter .container {
+	height: 350px;
+}
+
+#pagefooter .registercont .contact-form {
+	height: 40px;
+}
+
+#mm_footer-services,
+#mm_footer-grahams,
+#mm_footer-home,
+#mm_footer-follow {
+	border-left: 1px solid #68c35d;
+	font-size: 15px;
+}
+
+ul#mm_footer-services,
+ul#mm_footer-grahams,
+ul#mm_footer-home,
+ul#mm_footer-follow{
+	height: 125px;
+}
+
+ul#mm_footer-services li,
+ul#mm_footer-grahams li,
+ul#mm_footer-home li {
+	display: list-item;
+	border: 0px;
+	text-align: left;	
+	margin: 10px 10px 10px 5px;
+}
+
+ul#mm_footer-follow li.mm_pinterest,
+ul#mm_footer-follow li.mm_twitter,
+ul#mm_footer-follow li.mm_facebook{
+	display: list-item;
+	border: 0px;
+	background: url(mm_social-sprites-smush.png) no-repeat;
+	margin: 10px 10px 10px 17px;
+	padding-top: 2px; 
+	width: 22px;
+	height: 20px;
+}
+
+ul#mm_footer-follow li.mm_pinterest {
+	background-position: 0 -73px ;
+}
+
+ul#mm_footer-follow li.mm_twitter {
+	background-position: 0 -93px ;
+}
+
+ul#mm_footer-follow li.mm_facebook {
+	background-position: 0 -53px ;
+}
+
+ul#mm_footer-follow li.mm_yelp{
+	background-position: 0 -115px ;
+}
+
+ul#mm_footer-follow li a {
+	margin-left: 11px;
+}

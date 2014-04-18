@@ -1,0 +1,167 @@
+<footer id="pagefooter">
+    <div class="container">
+        {% if settings.enable_signup %}
+        <div class="sixteen columns row registercont">
+            
+          
+          {% if settings.chimp_action != empty and settings.chimp_action.size > 0 %}
+          <a class="button altcolor showregister" href="#">Register</a>
+          <div class="registerform formfields smarttextinput">
+            <form action="{{ settings.chimp_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+              <div class="inputrow">
+                <label class="hoverlabel" for="mce-EMAIL">Email address</label>
+                <input type="email" class="required email" data-fieldname="Email" value="" id="mce-EMAIL" required name="EMAIL" />
+                <input type="submit" name="subscribe" value="->" />
+              </div>
+            </form>
+          </div>
+          {% else %}
+            {% form 'customer' %}
+                {% if form.posted_successfully? %}
+                    <p class="thanks">Thank you for your interest!</p>
+                    <script>window.scroll(0,1000000)</script>
+                {% else %}
+                    {% if form.errors %}
+                        <script>window.scroll(0,1000000)</script>
+                        {% for field in form.errors %}
+                        <p class="error">{{ field | capitalize }} - {{ form.errors.messages[field] }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <div class="registerform formfields">
+                            <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+                            <div class="inputrow">                                
+                                <label class="mm_item-form" for="mailinglist_email">{{ settings.text_subscribetolist }}</label>
+                                <input type="email" class="required mm_item-form" data-fieldname="Email" placeholder="Add your e-mail" value="" id="mailinglist_email" name="contact[email]" />
+                                <input type="submit" value="SIGN UP" id="mm_submit" class="mm_item-form" title="{{ settings.text_subscribetolist }}"/>
+                            </div>
+                        </div>
+                    {% endif %}
+                        
+                {% endif %}
+            {% endform %}
+          {% endif %}
+        </div>
+        {% endif %}
+        
+        {% if linklists.footer.links.size > 0 %}
+        <nav class="sixteen columns row">            
+            <div class="large-2 medium-6 small-12 columns">
+                <h3 class="mm_h3-footer">{{ linklists.menu-footer-1.title }}</h3> 
+                <ul id="mm_footer-home">
+                {% for link in linklists.menu-footer-1.links %}                    
+                    <li{% if forloop.first %} class="first"{% endif %}><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="large-3 medium-6 small-12 columns">
+                <h3 class="mm_h3-footer">{{ linklists.menu-footer-2.title }}</h3>
+                <ul id="mm_footer-grahams">
+                {% for link in linklists.menu-footer-2.links %}
+                    <li{% if forloop.first %} class="first"{% endif %}><a href="{{ link.url }}" target="_blank" title="{{ link.title }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="large-3 medium-6 small-12 columns">
+                <h3 class="mm_h3-footer">{{ linklists.menu-footer-3.title }}</h3>
+                <ul id="mm_footer-services">
+                {% for link in linklists.menu-footer-3.links %}
+                    <li{% if forloop.first %} class="first"{% endif %}><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="large-2 medium-6 small-12 columns">
+                {% if settings.sm_rss or settings.sm_facebook or settings.sm_twitter or settings.sm_tumblr or settings.sm_pinterest or settings.sm_youtube or settings.sm_instagram %}
+                    <h3 class="mm_h3-footer">Follow us </h3>
+                <!--<div class="socialicons actions-item">-->
+                    <ul id="mm_footer-follow">
+                    {% if settings.sm_rss %}
+                        <li class="rss"><a title="Follow our RSS" target="_blank" href="{{ blogs[settings.sm_rss_blog].url }}.atom">RSS</a></li>
+                    {% endif %}
+                    {% if settings.sm_facebook %}
+                        <li class="mm_facebook"><a title="Follow us on Facebook" target="_blank" href="{{settings.sm_facebook_link}}">Facebook</a></li>
+                    {% endif %}
+                    {% if settings.sm_twitter %}
+                        <li class="mm_twitter"><a title="Follow us on Twitter" target="_blank" href="{{settings.sm_twitter_link}}">Twitter</a></li>
+                    {% endif %}
+                    {% if settings.sm_tumblr %}
+                        <li class="tumblr"><a title="Follow our Tumblr" target="_blank" href="{{settings.sm_tumblr_link}}">Tumblr</a></li>
+                    {% endif %}
+                    {% if settings.sm_pinterest %}
+                        <li class="mm_pinterest"><a title="Follow us on Pinterest" target="_blank" href="{{settings.sm_pinterest_link}}">Pinterest</a></li>
+                    {% endif %}
+                    {% if settings.sm_youtube %}
+                        <li class="youtube"><a title="Follow us on YouTube" target="_blank" href="{{settings.sm_youtube_link}}">YouTube</a></li>
+                    {% endif %}
+                    {% if settings.sm_instagram %}
+                        <li class="instagram"><a title="Follow us on Instagram" target="_blank" href="{{settings.sm_instagram_link}}">Instagram</a></li>
+                    {% endif %}
+                    {% if settings.sm_yelp %}
+                        <li class="instagram"><a title="Follow us on Yelp" target="_blank" href="{{settings.sm_yelp_link}}">Yelp</a></li>
+                    {% endif %}
+                    </ul>
+                <!--</div>-->
+                {% endif %}
+            </div>
+
+
+        </nav>
+        {% endif %}
+        <div class="sixteen columns copyright">
+            <a href="http://monkeymob.com.br" title="Developed by Monkey Mob"  target="_blank" id="mm_home_monkeymob">monkeymob</a>             
+        </div>
+        <div class="paymentmethods sixteen columns row">
+            {% if settings.payment_2co_enabled == true %}
+            <span class="2co"><span>2Checkout</span></span>
+            {% endif %}
+            {% if settings.payment_amex_enabled == true %}
+            <span class="amex"><span>American Express</span></span>
+            {% endif %}
+            {% if settings.payment_cirrus_enabled == true %}
+            <span class="cirrus"><span>Cirrus</span></span>
+            {% endif %}
+            {% if settings.payment_delta_enabled == true %}
+            <span class="delta"><span>Delta</span></span>
+            {% endif %}
+            {% if settings.payment_discover_enabled == true %}
+            <span class="discover"><span>Discover</span></span>
+            {% endif %}
+            {% if settings.payment_google_enabled == true %}
+            <span class="google"><span>Google Checkout</span></span>
+            {% endif %}
+            {% if settings.payment_maestro_enabled == true %}
+            <span class="maestro"><span>Maestro</span></span>
+            {% endif %}
+            {% if settings.payment_mastercard_enabled == true %}
+            <span class="mastercard"><span>Mastercard</span></span>
+            {% endif %}
+            {% if settings.payment_moneybookers_enabled == true %}
+            <span class="moneybook"><span>Moneybookers</span></span>
+            {% endif %}
+            {% if settings.payment_paypal_enabled == true %}
+            <span class="paypal"><span>PayPal</span></span>
+            {% endif %}
+            {% if settings.payment_sagepay_enabled == true %}
+            <span class="sage"><span>SagePay</span></span>
+            {% endif %}
+            {% if settings.payment_solo_enabled == true %}
+            <span class="solo"><span>Solo</span></span>
+            {% endif %}
+            {% if settings.payment_switch_enabled == true %}
+            <span class="switch"><span>Switch</span></span>
+            {% endif %}
+            {% if settings.payment_visa_enabled == true %}
+            <span class="visa"><span>Visa</span></span>
+            {% endif %}
+            {% if settings.payment_visaelectron_enabled == true %}
+            <span class="electron"><span>Visa Electron</span></span>
+            {% endif %}
+            {% if settings.payment_jcb_enabled == true %}
+            <span class="jcb"><span>JCB</span></span>
+            {% endif %}
+            {% if settings.payment_diners_enabled == true %}
+            <span class="diners"><span>Diners Club</span></span>
+            {% endif %}
+        </div>
+    </div>
+</footer>

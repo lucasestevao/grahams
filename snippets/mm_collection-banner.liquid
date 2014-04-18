@@ -1,0 +1,17 @@
+{% if mm_collection-banner == '' %}
+    <img src="{{ mm_collection_image | asset_url }}" alt="{{ mm_collection-banner }}"/>
+{% else %}
+    {% capture firstchar %}{{ mm_collection-banner | truncate: 1, '' }}{% endcapture %}
+    {% capture first7chars %}{{ mm_collection-banner | truncate: 7, '' }}{% endcapture %}
+    {% if firstchar == '/' or firstchar == '#' or first7chars == 'http://' or first7chars == 'https:/' %}
+        {% comment %} Allow alt text with pipe-separator e.g. 'http://google.com|Link to google' {% endcomment %}
+        {% assign splitwords = mm_collection-banner | split: '|' %}
+        {% if splitwords.size == 1 %}
+        <a href="{{ mm_collection-banner }}"><img src="{{ mm_collection_image | asset_url }}" alt="{{ mm_collection-banner }}"/></a>
+        {% elsif splitwords.size == 2 %}
+        <a href="{{ splitwords[0] }}" title="{{ splitwords[1] }}"><img src="{{ mm_collection_image | asset_url }}" alt="{{ splitwords[1] }}"/></a>
+        {% else %}
+        <a href="{{ splitwords[0] }}" title="{{ splitwords[2] }}"><img src="{{ mm_collection_image | asset_url }}" alt="{{ splitwords[1] }}"/></a>
+        {% endif %}
+    {% endif %}
+{% endif %}
