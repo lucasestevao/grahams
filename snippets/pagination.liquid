@@ -1,22 +1,3 @@
-{% comment %} Minified: {% endcomment %}
-<div class="paging">{% if paginate.pages > 1 %}{% if paginate.previous %}<a class="prev" href="{{ paginate.previous.url }}">&#8249;</a>{% endif %}{% for part in paginate.parts %}{% if part.is_link %}<span class="page">{{ part.title | link_to: part.url }}</span>{% else %}<span class="page current">{{ part.title }}</span>{% endif %}{% endfor %}{% if paginate.next %}<a class="next" href="{{ paginate.next.url }}">&#8250;</a>{% endif %}{% endif %}</div>&nbsp;
-
-{% comment %} Original:
-<div class="paging">
-{% if paginate.pages > 1 %}
-    {% if paginate.previous %}
-        <a class="prev" href="{{ paginate.previous.url }}">&#8249;</a>
-    {% endif %}
-    {% for part in paginate.parts %}
-        {% if part.is_link %}
-            <span class="page">{{ part.title | link_to: part.url }}</span>
-        {% else %}
-            <span class="page current">{{ part.title }}</span>
-        {% endif %}        
-    {% endfor %}      
-    {% if paginate.next %}
-        <a class="next" href="{{ paginate.next.url }}">&#8250;</a>
-    {% endif %}
-{% endif %}    
-</div>&nbsp;
-{% endcomment %}
+{% comment %} Minified New Version:{% endcomment %}
+<ul class="pagination">{% if paginate.pages > 1 %}{% if paginate.previous %}<li><a class="prev" href="{{ paginate.previous.url }}">&#8249;</a></li>{% endif %}{% for part in paginate.parts %}{% if part.is_link %}<li>{{ part.title | link_to: part.url }}</li>{% elsif part.title == paginate.current_page %}<li class="active"><a>{{ part.title }}</a></li>{% else %}<li class="disabled"><a>{{ part.title }}</a></li>{% endif %}{% endfor %}{% if paginate.next %}<li><a class="next" href="{{ paginate.next.url }}">&#8250;</a></li>{% endif %}{% endif %}</ul>&nbsp;
+{% comment %}{% endcomment %}

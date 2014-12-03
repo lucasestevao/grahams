@@ -45,32 +45,32 @@
         
         {% if linklists.footer.links.size > 0 %}
         <nav class="sixteen columns row">            
-            <div class="large-2 medium-6 small-12 columns">
+            <div class="footer-column-1 medium-6 small-12 columns">
                 <h3 class="mm_h3-footer">{{ linklists.menu-footer-1.title }}</h3> 
                 <ul id="mm_footer-home">
                 {% for link in linklists.menu-footer-1.links %}                    
-                    <li{% if forloop.first %} class="first"{% endif %}><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+                    <li{% if forloop.first %} class="first mm_item" {% else %} class="mm_item" {% endif %}><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
                 {% endfor %}
                 </ul>
             </div>
             
-            <div class="large-3 medium-6 small-12 columns">
+            <div class="footer-column-2 medium-6 small-12 columns">
                 <h3 class="mm_h3-footer">{{ linklists.menu-footer-2.title }}</h3>
                 <ul id="mm_footer-grahams">
                 {% for link in linklists.menu-footer-2.links %}
-                    <li{% if forloop.first %} class="first"{% endif %}><a href="{{ link.url }}" target="_blank" title="{{ link.title }}">{{ link.title }}</a></li>
+                    <li{% if forloop.first %} class="first mm_item" {% else %} class="mm_item" {% endif %}><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
                 {% endfor %}
                 </ul>
             </div>
-            <div class="large-3 medium-6 small-12 columns">
+            <div class="footer-column-3 medium-6 small-12 columns">
                 <h3 class="mm_h3-footer">{{ linklists.menu-footer-3.title }}</h3>
                 <ul id="mm_footer-services">
                 {% for link in linklists.menu-footer-3.links %}
-                    <li{% if forloop.first %} class="first"{% endif %}><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+                    <li{% if forloop.first %} class="first mm_item" {% else %} class="mm_item" {% endif %}><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
                 {% endfor %}
                 </ul>
             </div>
-            <div class="large-2 medium-6 small-12 columns">
+            <div class="footer-column-4 medium-6 small-12 columns">
                 {% if settings.sm_rss or settings.sm_facebook or settings.sm_twitter or settings.sm_tumblr or settings.sm_pinterest or settings.sm_youtube or settings.sm_instagram %}
                     <h3 class="mm_h3-footer">Follow us </h3>
                 <!--<div class="socialicons actions-item">-->
@@ -112,7 +112,7 @@
         </div>
         <div class="paymentmethods sixteen columns row">
             {% if settings.payment_2co_enabled == true %}
-            <span class="2co"><span>2Checkout</span></span>
+            <span class="tco"><span>2Checkout</span></span>
             {% endif %}
             {% if settings.payment_amex_enabled == true %}
             <span class="amex"><span>American Express</span></span>

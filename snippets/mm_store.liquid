@@ -1,0 +1,36 @@
+{% assign mm_storelocator-en = 'mm_storelocator-en-ind' | replace: 'ind', mm_store %}
+{% if settings[mm_storelocator-en] %}
+	{% assign mm_storelocator-name = 'mm_storelocator-name-ind' | replace: 'ind', mm_store %}
+	{% assign mm_storelocator-address = 'mm_storelocator-address-ind' | replace: 'ind', mm_store %}
+	{% assign mm_storelocator-address-line = 'mm_storelocator-address-line-ind' | replace: 'ind', mm_store %}
+	{% assign mm_storelocator-phone = 'mm_storelocator-phone-ind' | replace: 'ind', mm_store %}
+	{% assign mm_storelocator-men = 'mm_storelocator-men-ind' | replace: 'ind', mm_store %}
+	{% assign mm_storelocator-women = 'mm_storelocator-women-ind' | replace: 'ind', mm_store %}
+	{% assign mm_storelocator-kids = 'mm_storelocator-kids-ind' | replace: 'ind', mm_store %}
+	{% assign mm_storelocator-coord-lat = 'mm_storelocator-coord-lat-ind' | replace: 'ind', mm_store %}
+	{% assign mm_storelocator-coord-lng = 'mm_storelocator-coord-lng-ind' | replace: 'ind', mm_store %}
+	<li id="mm_store_{{ mm_store }}"
+		class="store-item m-{{settings[mm_storelocator-men]}} w-{{settings[mm_storelocator-women]}} k-{{settings[mm_storelocator-kids]}}"
+		data-id="{{ mm_store }}"
+		data-title="{{ settings[mm_storelocator-name] }}"
+		data-lat="{{ settings.[mm_storelocator-coord-lat] }}"
+		data-lng="{{ settings.[mm_storelocator-coord-lng] }}" >
+		<div class="store">
+			<div class="title">{{ settings[mm_storelocator-name] }}</div>
+			<div class="address">{{ settings[mm_storelocator-address] }}</div>
+			<div class="address-line">{{ settings[mm_storelocator-address-line] }}</div>
+			<div class="telephone">{{ settings[mm_storelocator-phone] }}</div>
+			<ul class="features row">
+				{% if settings[mm_storelocator-men] %}
+				<li class="men">{{ "mm_storelocator-icon-men.png" | asset_url | img_tag }}</li>
+				{% endif %}
+				{% if settings[mm_storelocator-women] %}
+				<li class="women">{{ "mm_storelocator-icon-women.png" | asset_url | img_tag }}</li>
+				{% endif %}
+				{% if settings[mm_storelocator-kids] %}
+				<li class="kids">{{ "mm_storelocator-icon-kids.png" | asset_url | img_tag }}</li>
+				{% endif %}
+			</ul>
+		</div>
+	</li>
+{% endif %}

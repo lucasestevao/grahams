@@ -1,5 +1,5 @@
 {% if mm_collection-banner == '' %}
-    <img src="{{ mm_collection_image | asset_url }}" alt="{{ mm_collection-banner }}"/>
+    <img src="{{ mm_collection_image | asset_url }}" alt="{{ mm_collection_image_alt }}"/>
 {% else %}
     {% capture firstchar %}{{ mm_collection-banner | truncate: 1, '' }}{% endcapture %}
     {% capture first7chars %}{{ mm_collection-banner | truncate: 7, '' }}{% endcapture %}
@@ -7,7 +7,7 @@
         {% comment %} Allow alt text with pipe-separator e.g. 'http://google.com|Link to google' {% endcomment %}
         {% assign splitwords = mm_collection-banner | split: '|' %}
         {% if splitwords.size == 1 %}
-        <a href="{{ mm_collection-banner }}"><img src="{{ mm_collection_image | asset_url }}" alt="{{ mm_collection-banner }}"/></a>
+        <a href="{{ mm_collection-banner }}"><img src="{{ mm_collection_image | asset_url }}" alt="{{ mm_collection_image_alt }}"/></a>
         {% elsif splitwords.size == 2 %}
         <a href="{{ splitwords[0] }}" title="{{ splitwords[1] }}"><img src="{{ mm_collection_image | asset_url }}" alt="{{ splitwords[1] }}"/></a>
         {% else %}

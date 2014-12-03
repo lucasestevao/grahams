@@ -2,28 +2,28 @@
     {% if shop.customer_accounts_enabled and customer %}
         <div class="container cf util-bar-upperarea">
             <div class="sixteen columns">
-              <a class="button" href="/account">Manage your account</a>
+                <a class="button" href="/account">Manage your account</a>
                 <a class="button" href="/account/logout">Logout</a>
             </div>
         </div>
     {% elsif shop.customer_accounts_enabled %}
-    	<div id="util-bar-login" class="container cf util-bar-upperarea">
+        <div id="util-bar-login" class="container cf util-bar-upperarea">
             <div class="inputwrap sixteen columns formfields">
                 <form action="/account/login" method="post">
-        			<span class="title">{{ settings.text_login }}</span>
+                    <span class="title">{{ settings.text_login }}</span>
                     <div class="nameinputcont inputrow">
                         <label for="headername" class="hoverlabel">Email address</label>
-        			    <input id="headername" type="text" class="nameinput" name="customer[email]" />
+                        <input id="headername" type="text" class="nameinput" name="customer[email]" />
                     </div>
-        			<div class="passwordinputcont inputrow">
+                    <div class="passwordinputcont inputrow">
                         <label for="headerpassword" class="hoverlabel">Password</label>
-        				<input id="headerpassword" type="password" class="password" name="customer[password]" />
-        				<span class="forgot"><a href="/account/login">Forgot your password?</a></span>
-        			</div>
+                        <input id="headerpassword" type="password" class="password" name="customer[password]" />
+                        <span class="forgot"><a href="/account/login">Forgot your password?</a></span>
+                    </div>
                     <input type="submit" class="button pink" value="{{ settings.text_login }}" />
                 </form>
             </div>
-    	</div>
+        </div>
     {% endif %}
     <div class="container">
         <div class="cartsocialcont {% if settings.search_pos == 'tl' %}search-in-tagline{% else %}text-in-tagline{% endif %} sixteen columns {% if settings.search_pos == 'tr-sl' %}search-expandable{% endif %}">
@@ -31,6 +31,7 @@
                 <div class="tagline-area">
                     <div id="searchcont" class="inline formfields">
                         <form class="inputrow" action="/search" method="get">
+                        	<input type="hidden" name="type" value="product" />
                             <label class="hoverlabel" for="searchinput">{{ settings.text_search }}</label>
                             <input class="search defaulttextjs" name="q" id="searchinput" type="text" />
                             <input type="submit" value="→" />
@@ -41,22 +42,25 @@
                 <div class="tagline-area tagline">{{ settings.head_tagline }}&nbsp;</div>
             {% endif %}
             
-    		<div class="actions">                
+            <div class="actions">
                
                 {% if shop.customer_accounts_enabled and customer %}
-              <a href="#" class="account logindrop actions-item">{{ settings.text_youraccount }}</a>
+                <a href="#" class="account logindrop actions-item">{{ settings.text_youraccount }}</a>
                 {% elsif shop.customer_accounts_enabled %}
                     {% if settings.show_reg %}
                         <span class="actions-item">{{ 'Register' | customer_register_link }}</span>
                     {% endif %}
-    			    <a href="#" class="account logindrop actions-item">{{ settings.text_login }}</a>
+                    <a href="#" class="account logindrop actions-item">{{ settings.text_login }}</a>
                 {% endif %}
-    			
-              	<a class="actions-item" href="/{% if template != 'cart' %}cart{% else %}checkout{% endif %}" id="cartsummary">{{ settings.text_cart }} <span id="headercartvals">({{ cart.item_count }}) {{ cart.total_price | money_without_currency }}</span></a>
+
+                {% if settings.mm_ecommerce_en %}
+                <a class="actions-item" href="/{% if template != 'cart' %}cart{% else %}checkout{% endif %}" id="cartsummary">{{ settings.text_cart }} <span id="headercartvals">({{ cart.item_count }}) {{ cart.total_price | money_without_currency }}</span></a>
+                {% endif %}
               
                 {% if settings.search_pos == 'tr-f' %}
                     <div id="searchcont" class="inline formfields actions-item">
                         <form class="inputrow" action="/search" method="get">
+                        	<input type="hidden" name="type" value="product" />
                             <label class="hoverlabel" for="searchinput">{{ settings.text_search }}</label>
                             <input class="search defaulttextjs" name="q" id="searchinput" type="text" />
                             <input type="submit" value="→" />
@@ -64,25 +68,26 @@
                     </div>
                 {% endif %}
             </div>
-		</div>
+        </div>
         {% if settings.search_pos == 'tr-sl' %}
         <div id="searchcont" class="slideout formfields dohover smarttextinput">
             <a href="#" class="searchbtn">{{ settings.text_search }}</a>
             <div class="searchformwrap">
                 <form class="inputrow" action="/search" method="get">
+                	<input type="hidden" name="type" value="product" />
                     <label class="hoverlabel" for="searchinput">{{ settings.text_search }}</label>
                     <input class="search defaulttextjs" name="q" id="searchinput" type="text" />
                     <input type="submit" value="→" />
-            	</form>
+                </form>
             </div>
         </div>
         {% endif %}
-	</div>
+    </div>
 </div>
 
 <div class="bodywrap">
     <header id="pageheader" class="container">
-    	<div id="logo-area" class="sixteen columns">
+        <div id="logo-area" class="sixteen columns">
             {% if template == 'index' %}
             <h1 id="logo">
             {% else %}
@@ -90,7 +95,7 @@
             {% endif %}
             
             {% if settings.use_logo_image %}
-    		<a href="/" class="image-logo" title="{{ shop.name }} logo"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }} logo" /></a>
+            <a href="/" class="image-logo" title="{{ shop.name }} logo"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }} logo" /></a>
             {% else %}
             <a href="/" class="text-logo">{{ shop.name }}</a>
             {% endif %}
@@ -104,20 +109,21 @@
             {% if settings.search_pos == 'logo-ru' or settings.search_pos == 'logo-rl' %}
                 <div id="searchcont" class="inline formfields {% if settings.search_pos == 'logo-rl'%}lower{% endif %}">
                     <form class="inputrow" action="/search" method="get">
+                    	<input type="hidden" name="type" value="product" />
                         <label class="hoverlabel" for="searchinput">{{ settings.text_search }}</label>
                         <input class="search defaulttextjs" name="q" id="searchinput" type="text" />
                         <input type="submit" value="→" />
                     </form>
                 </div>
             {% endif %}
-    	</div>
-    	<nav class="sixteen columns">
+        </div>
+        <nav class="sixteen columns">
             {% assign dropdownMarkup = '' %}
-            {% assign firstliclass = 'class="first"' %}
-    		<ul class="mm-menu">
-        	  	{% for link in linklists.main-menu.links %}
-        			<li {{ firstliclass }}>
-                      {% assign firstliclass = '' %}
+            {% assign liclass = 'class="first mm_nav-item"' %}
+            <ul class="mm-menu">
+                  {% for link in linklists.main-menu.links %}
+                    <li {{ liclass }}>
+                      {% assign liclass = 'class="mm_nav-item"' %}
                       {% comment %} Get any lists named the same as the parent and treat as subnav {% endcomment %}
                       {% include 'child-menu-detector' with link %}
                       {% if has_drop_down %}
@@ -137,12 +143,12 @@
                           <a href="{{ link.url }}">{{ link.title }}</a>
                           {% capture dropdownMarkup %}{{ dropdownMarkup }}<option value="{{ link.url }}">{{ link.title }}</option>{% endcapture %}
                       {% endif %}
-        			</li>
-    			{% endfor %}
-    		</ul>
+                    </li>
+                {% endfor %}
+            </ul>
             <select id="dropdownNav" class="noreplace"><option value="">Go to...</option>{{ dropdownMarkup }}</select>
             {% if settings.search_pos == 'header' %}
                 {% include 'search.page' %}
             {% endif %}
-    	</nav>
+        </nav>
     </header>

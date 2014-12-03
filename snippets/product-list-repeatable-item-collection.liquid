@@ -1,0 +1,87 @@
+{% if these_are_related_products %}
+    {% assign producturl = product-list-repeatable-item-collection.url %}
+{% else %}
+    {% assign producturl = product-list-repeatable-item-collection.url | within: collection %}
+{% endif %}
+{% if forloop.last %}
+    {% assign lastclass = ' last' %}
+{% else %}
+    {% assign lastclass = '' %}
+{% endif %}
+
+
+{% if template contains 'collection' %}
+{% if row_limit == 2 %}
+{% capture lastclass %}{{ lastclass }}{% cycle ' startrow', '' %}{% endcapture %}
+{% elsif row_limit == 3 %}
+{% capture lastclass %}{{ lastclass }}{% cycle ' startrow', '', '' %}{% endcapture %}
+{% elsif row_limit == 5 %}
+{% capture lastclass %}{{ lastclass }}{% cycle ' startrow', '', '', '', '' %}{% endcapture %}
+{% else %}
+{% capture lastclass %}{{ lastclass }}{% cycle ' startrow', '', '', '' %}{% endcapture %}
+{% endif %}
+{% endif %}
+
+{% if row_limit == 2 %}
+    <div class="product eight columns{{ lastclass }}">
+{% elsif row_limit == 3 %}
+    <div class="product one-third column{{ lastclass }}">
+{% elsif row_limit == 5 %}
+    <div class="product one-fifth column{{ lastclass }}">
+{% else %}
+    <div class="product four columns{{ lastclass }}">
+{% endif %}
+    {% assign product_thumb_size = 'large' %}
+    <div class="imgcont loadingimg">
+        {% if settings.mm_prod_thumb_hover_method == 'zoom' %}
+          <div class="image-inner-wrap">
+            <a class="delayedzoom" href="{{ producturl }}" data-jqzoom-img-override="{{ product-list-repeatable-item-collection.featured_image | product_img_url: 'grande' }}" rel="" title="">
+                <img src="{{ product-list-repeatable-item-collection.featured_image | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item-collection.featured_image.alt }}" />
+            </a>
+              {% if settings.mm_ecommerce_en %}
+              {% if product-list-repeatable-item-collection.compare_at_price_max > product-list-repeatable-item-collection.price and settings.mm_prod_sale_mode != 'none' %}
+              <div class="salecontainer"><a class="sale" href="{{ producturl }}">{{ settings.text_sale }}</a></div>
+              {% endif %}
+              {% endif %}
+          </div>
+        {% elsif settings.mm_prod_thumb_hover_method == 'duelimage' and product-list-repeatable-item-collection.images.size > 1 %}
+            <a class="imgswitch image-inner-wrap" href="{{ producturl }}">
+              <img src="{{ product-list-repeatable-item-collection.featured_image | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item-collection.featured_image.alt }}" />
+              <div class= "altimgcont">
+                <img class="altimg" src="{{ product-list-repeatable-item-collection.images[1] | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item-collection.images[1].alt }}" />
+              </div>
+              
+              {% if settings.mm_ecommerce_en %}
+              {% if product-list-repeatable-item-collection.compare_at_price_max > product-list-repeatable-item-collection.price and settings.mm_prod_sale_mode != 'none' %}
+              <div class="salecontainer"><span class="sale" href="{{ producturl }}">{{ settings.text_sale }}</span></div>
+              {% endif %}
+              {% endif %}
+            </a>
+        {% else %}
+            <a href="{{ producturl }}" class="image-inner-wrap {% if settings.mm_prod_thumb_hover_method == 'simple' %}highlight{% endif %}">
+              <img src="{{ product-list-repeatable-item-collection.featured_image | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item-collection.featured_image.alt }}" />
+              {% if settings.mm_ecommerce_en %}
+              {% if product-list-repeatable-item-collection.compare_at_price_max > product-list-repeatable-item-collection.price and settings.mm_prod_sale_mode != 'none' %}
+              <div class="salecontainer"><span class="sale" href="{{ producturl }}">{{ settings.text_sale }}</span></div>
+              {% endif %}
+              {% endif %}
+            </a>
+      {% endif %}
+    </div>
+
+    <p class="title"><a href="{{ producturl }}">{{ product-list-repeatable-item-collection.title }}</a></p>
+    {% comment %}{% unless settings.mm_prod_thumb_desc_chars == '0' %}
+    <a class="desc" href="{{ producturl }}">
+        {% capture proddesc %}{% include 'process-html-strip' with product-list-repeatable-item-collection.description %}{% endcapture %}
+      {{ proddesc | strip_html | truncate: settings.mm_prod_thumb_desc_chars }}
+    </a>
+    {% endunless %}{% endcomment %}
+    
+    {% if settings.mm_ecommerce_en %}
+    <div class="price">
+        {% if product-list-repeatable-item-collection.compare_at_price_max > product-list-repeatable-item-collection.price %}<span class="reducedfrom">{{ product-list-repeatable-item-collection.compare_at_price_max | money }}</span>{% endif %}
+        {% if product-list-repeatable-item-collection.price_varies %}<span class="from">from</span>{% endif %}
+        <span class="actual">{{ product-list-repeatable-item-collection.price | money }}</span>
+    </div>
+    {% endif %}
+  </div>

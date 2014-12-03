@@ -1,17 +1,73 @@
+<meta property="fb:admins" content="598773967" />
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta name="robots" content="index,follow">
+<meta name="author" content="Monkey Mob">
+<meta name="keywords" content="graham, grahams, grahams shoes, gram's, ireland, shoes, footwear, rieker shoes ireland, grahams shoes kilkenny, geox ireland, clarks shoes kilkenny, grahams shoes dublin, kids shoes dublin, Shoes In Ireland, Beautiful shoes, Kids shoes, Fancy Shoes, Fancy Sandals, Winter Shoes, Summer Shoes, Women's shoes, men's shoes, boys shoes, boys runners, girls shoes, pre walkers, children's shoes, Shoes in Dublin, the Best shoes shop in Dublin, the best shoes shop in Ireland, Bronze Shoes, Men's Style, Women's Style, Kid's Style, Ballet Pumps, Boots, Flat Sandals, Flat Shoes, Heeled Sandals, High Heels, Platforms, Pointed Shoes, Trainers, Wedges, Wedding Shoes, First Holy Communion, Comfortable shoes, ankle boots, sneakers, knee boots, Mary Jane, Agatha, Clarks, Converse, Crocs, Dr. Martens, Dubarry, EMU, Geox Lelly Kelly, Lea Lelo, Primigi,Rochele, Skechers, Amy Huberman, Blink, Earthspirit, Evolve, Featherlite, Fitflop, H3, Marila, Marco Tozzi, Mia Mao Mustang, Remonte, Rieker, Rubyshoe, S.Oliver, Skechers, SPM, Tamaris, Vagabond, Vans, Zanni">
 
-<link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+{% if page_description != '' %}
+	<meta name="description" content="{{ page_description }}" />
+{% else %}
+	{% assign maxwords = 30 %}
+	{% if template contains 'product' %}
+	   {% capture productdesc %}{% include 'process-html-strip' with product.description %}{% endcapture %}
+	   <meta name="description" content="{{ productdesc | strip_html | strip_newlines | truncatewords: maxwords | escape }}" />
+	{% elsif template contains 'page' %}
+	   {% capture page_trunc %}{% include 'process-html-strip' with page.content %}{% endcapture %}
+	   <meta name="description" content="{{ page_trunc | strip_html | strip_newlines | truncatewords: maxwords | escape }}" />
+	{% elsif template == 'index' %}
+	   <meta name="description" content="{{ shop.description | escape }}" />
+	{% endif %}
+{% endif %}
+
+<meta name="google-site-verification" content="VUr7RtF_-HM-nb-ez0Pj1O-FTM3k3OfePX-eiX8qWS0" />
+
+<meta name="geo.position" content="53.2644001,-6.4178632">
+<meta name="geo.placename" content="Ireland">
+<meta name="geo.region" content="en">
+
+<meta property="og:site_name" content="{{ shop.name | escape }}" />
+<meta property="og:locale" content="en-IE">
+
+{% if template == 'product' %}
+	<meta property="og:image" content="http:{{ product.featured_image | product_img_url: 'large' }}" />
+	<meta property="og:description" content="{{ productdesc | strip_html | truncatewords:20 | escape }}" />
+	<meta property="og:title" content="{{ product.title | escape }} - {{ shop.name | escape }}" />
+	<meta property="og:type" content="product" />
+	<meta property="og:url" content="{{ shop.url }}{{ product.url }}" />
+{% elsif template contains 'article' %}
+	<meta property="og:title" content="{{ article.title | escape }} - {{ shop.name | escape }}" />
+	<meta property="og:description" content="{{ article.content | strip_html | truncatewords:20 | escape }}" />
+	<meta property="og:url" content="{{ shop.url }}{{ article.url }}" />
+	<meta property="og:type" content="article" />
+	{% if article.content contains '<img' %}
+		{% assign src = article.content | split: 'src="' %}
+		{% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' %}
+		{% if src %}<meta property="og:image" content="{{ src }}" />{% endif %}
+	{% elsif settings.use_logo_image == true %}
+		<meta property="og:image" content="http:{{ 'logo.png' | asset_url }}" />
+	{% endif %}
+{% else %}
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Grahams">
+	<meta property="og:description" content="{{ shop.description | escape }}">
+	{% if settings.use_logo_image == true %}
+		<meta property="og:image" content="http:{{ 'logo.png' | asset_url }}" />
+	{% endif %}
+	{% if template == 'index' %}
+		<meta property="og:url" content="{{ shop.url }}" />
+	{% elsif template == 'blog' %}
+		<meta property="og:url" content="{{ shop.url }}{{ blog.url }}" />
+	{% endif %}
+{% endif %}
+
+<link rel="canonical" href="{{ canonical_url }}" />
 <!--[if IE]><link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}"/><![endif]-->
-
-{% comment %}
-If you want to set custom icons to use on Apple iOS devices, upload the following files and un-comment these <link>s
-{% endcomment %}
-
+<link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
 <link rel="apple-touch-icon" sizes="57x57" href="{{ 'favicon-57x57.png' | asset_url }}">
 <link rel="apple-touch-icon" sizes="72x72" href="{{ 'favicon-72x72.png' | asset_url }}">
 <link rel="apple-touch-icon" sizes="114x114" href="{{ 'favicon-114x114.png' | asset_url }}">
@@ -20,54 +76,4 @@ If you want to set custom icons to use on Apple iOS devices, upload the followin
 <title>Page Not Found | {{ shop.name }}</title>
 {% else %}
 <title>{{ page_title }}</title>
-{% endif %}
-
-{% if page_description != '' %}
-	<meta name="description" content="{{ page_description }}" />
-{% else %}
-	{% assign maxwords = 30 %}
-  {% if template contains 'product' %}
-    {% capture productdesc %}{% include 'process-html-strip' with product.description %}{% endcapture %}
-    <meta name="description" content="{{ productdesc | strip_html | strip_newlines | truncatewords: maxwords | escape }}" />
-  {% elsif template contains 'page' %}
-    {% capture page_trunc %}{% include 'process-html-strip' with page.content %}{% endcapture %}
-    <meta name="description" content="{{ page_trunc | strip_html | strip_newlines | truncatewords: maxwords | escape }}" />
-  {% elsif template == 'index' %}
-  	<meta name="description" content="{{ shop.description | escape }}" />
-  {% endif %}
-{% endif %}
-
-<link rel="canonical" href="{{ canonical_url }}" />
-
-
-{% comment %} Below 'og' tags are for Facebook {% endcomment %}
-<meta property="og:site_name" content="{{ shop.name | escape }}" />
-{% if template == 'product' %}
-    <meta property="og:image" content="http:{{ product.featured_image | product_img_url: 'large' }}" />
-    <meta property="og:description" content="{{ productdesc | strip_html | truncatewords:20 | escape }}" />
-    <meta property="og:title" content="{{ product.title | escape }} - {{ shop.name | escape }}" />
-    <meta property="og:type" content="product" />
-    <meta property="og:url" content="{{ shop.url }}{{ product.url }}" />
-{% elsif template contains 'article' %}
-    <meta property="og:title" content="{{ article.title | escape }} - {{ shop.name | escape }}" />
-    <meta property="og:description" content="{{ article.content | strip_html | truncatewords:20 | escape }}" />
-    <meta property="og:url" content="{{ shop.url }}{{ article.url }}" />
-    <meta property="og:type" content="article" />
-    {% if article.content contains '<img' %}
-        {% assign src = article.content | split: 'src="' %}
-        {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' %}
-        {% if src %}<meta property="og:image" content="{{ src }}" />{% endif %}
-    {% elsif settings.use_logo_image == true %}
-		<meta property="og:image" content="http:{{ 'logo.png' | asset_url }}" />
-    {% endif %}
-{% else %}
-    <meta property="og:type" content="website" />
-    {% if settings.use_logo_image == true %}
-        <meta property="og:image" content="http:{{ 'logo.png' | asset_url }}" />
-    {% endif %}
-    {% if template == 'index' %}
-        <meta property="og:url" content="{{ shop.url }}" />
-    {% elsif template == 'blog' %}
-        <meta property="og:url" content="{{ shop.url }}{{ blog.url }}" />
-    {% endif %}
 {% endif %}

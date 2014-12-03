@@ -4,6 +4,7 @@
 <div class="sixteen columns mm_collection-boys">
     <div class="mm_collection_banner">
         {% assign mm_collection_image = 'mm_collection_boys_img.jpg' %}
+        {% assign mm_collection_image_alt = settings.mm_collection_boys_alt %}
         {% include 'mm_collection-banner' with settings.mm_collection_boys_handle %}
     </div>
     
@@ -15,7 +16,7 @@
     {% endif %}
     
     {% unless collection.handle == 'all' %}
-    <h2 class='mm_home-h2'>{{ collection.title | escape }}</h2>
+    <h2 class='mm_h2'>{{ collection.title | escape }}</h2>
     {% if collection.description != '' %}
         <div class="content-block row">
             {{ collection.description }}
@@ -59,9 +60,8 @@
     <div class="sixteen columns">There are no products here.</div>
 {% else %}
     <div class="productlist mm_productlist">
-    
     {% for product in collection.products %}
-        {% include 'mm_product-list-collection' with product %}
+        {% include 'product-list-repeatable-item-collection' with product %}
     {% endfor %}
     </div><!-- .productlist -->
 {% endif %}
@@ -83,5 +83,31 @@ $('.productlist').infinitescroll({
     });
 });
 </script>
+{% else %}
+<div class="sixteen columns">
+    {% if paginate.pages > 1 or collection.tags.size > 0 %}
+      <div class="row">
+        <div class="six columns omega offset-by-ten collectionfilter">
+            <div class="paging">
+            {% if paginate.pages > 1 %}
+                {% if paginate.previous %}
+                    <a class="prev" href="{{ paginate.previous.url }}">&#8249;</a>
+                {% endif %}
+                {% for part in paginate.parts %}
+                    {% if part.is_link %}
+                        <span class="page">{{ part.title | link_to: part.url }}</span>
+                    {% else %}
+                        <span class="page current">{{ part.title }}</span>
+                    {% endif %}        
+                {% endfor %}      
+                {% if paginate.next %}
+                    <a class="next" href="{{ paginate.next.url }}">&#8250;</a>
+                {% endif %}
+            {% endif %}
+            </div>&nbsp;
+        </div>
+      </div>
+    {% endif %}
+</div>
 {% endif %}
 {% endpaginate %}

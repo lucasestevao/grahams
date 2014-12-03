@@ -1,0 +1,47 @@
+<div class="sixteen columns">
+    <div id="crumbs">
+        <a href="/" title="Home">Home</a>
+        &raquo;
+        <a href="{{ collection.url }}">{{ collection.title | escape }}</a>
+    </div><!-- #crumbs -->
+    
+    {% if settings.show_social_coll %}
+    <div class="social floating">
+        <span class="label">{{ settings.text_sharethis }}</span>
+        {% include 'social-sharing' %}
+    </div>
+    {% endif %}
+    
+    {% unless collection.handle == 'all' %}
+    <h1>{{ collection.title | escape }}</h1>
+    {% if collection.description != '' %}
+        <div class="content-block row">
+            {{ collection.description }}
+        </div><!-- .pagecontent -->
+    {% endif %}
+    {% endunless %}
+</div>
+{% if collection.products.size == 0 %}
+    <div class="sixteen columns">There are no products here.</div>
+{% else %}
+    <div class="productlist">    
+    {% for product in collection.products %}        
+        {% include 'product-list-repeatable-item-trend-women' with product %}        
+    {% endfor %}
+            </div>
+        </div> <!-- fechando divs de trends -->
+    </div><!-- .productlist -->
+
+{% endif %}
+
+<div class="sixteen columns row">
+    <div class="mm_trends-center">
+        <a href="/collections/women" class="mm_trend-link"> See Collection </a>
+    </div>
+</div>
+<div class="sixteen columns row">
+    <div class="mm_trends-center">
+        <a href="/pages/store-locator" class="mm_trend-link"> Where to buy </a>
+        <a href="/pages/gift-voucher" class="mm_trend-link"> Buy Gift Voucher </a>
+    </div>
+</div>

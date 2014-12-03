@@ -1,4 +1,4 @@
-{% assign row_limit = settings.products_per_row_coll | plus: 0 %}
+{% assign row_limit = settings.products_per_row_coll | plus: 0 %} 
 {% assign total_prods_to_show = row_limit | times: settings.product_rows_on_coll_page %}
 {% paginate collection.products by total_prods_to_show %}
 <div class="sixteen columns">
@@ -26,27 +26,11 @@
 
     {% if paginate.pages > 1 or collection.tags.size > 0 %}
   	  <div class="row">
-        <div class="ten columns alpha">
-            <div class="paging">
-            {% if paginate.pages > 1 %}
-                {% if paginate.previous %}
-                    <a class="prev" href="{{ paginate.previous.url }}">&#8249;</a>
-                {% endif %}
-                {% for part in paginate.parts %}
-                    {% if part.is_link %}
-                        <span class="page">{{ part.title | link_to: part.url }}</span>
-                    {% else %}
-                        <span class="page current">{{ part.title }}</span>
-                    {% endif %}        
-                {% endfor %}      
-                {% if paginate.next %}
-                    <a class="next" href="{{ paginate.next.url }}">&#8250;</a>
-                {% endif %}
-            {% endif %}
-            </div>&nbsp;
+        <div class="eight columns alpha">
+            {% include 'pagination' %}
         </div>
         
-        <div class="six columns omega collectionfilter">
+        <div class="eight columns omega collectionfilter">
             {% if collection.handle and collection.tags.size > 0 %}
             <select id="tagfilter">
                 {% if current_tags and current_tags.size > 0 %}
@@ -83,7 +67,7 @@
 {% if collection.products.size == 0 %}
     <div class="sixteen columns">There are no products here.</div>
 {% else %}
-    <div class="productlist">
+    <div class="productlist mm_productlist">
     
     {% for product in collection.products %}
         {% include 'product-list-repeatable-item' with product %}
@@ -108,5 +92,15 @@ $('.productlist').infinitescroll({
     });
 });
 </script>
+{% else %}
+<div class="sixteen columns">
+    {% if paginate.pages > 1 or collection.tags.size > 0 %}
+      <div class="row">
+        <div class="eight columns omega offset-by-eight collectionfilter">
+            {% include 'pagination' %}
+        </div>
+      </div>
+    {% endif %}
+</div>
 {% endif %}
 {% endpaginate %}

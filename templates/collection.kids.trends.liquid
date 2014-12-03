@@ -1,0 +1,79 @@
+<div class="sixteen columns">
+    <div id="crumbs">
+        <a href="/" title="Home">Home</a>
+        &raquo;
+        <a href="{{ collection.url }}">{{ collection.title | escape }}</a>
+    </div><!-- #crumbs -->
+    
+    {% if settings.show_social_coll %}
+    <div class="social floating">
+        <span class="label">{{ settings.text_sharethis }}</span>
+        {% include 'social-sharing' %}
+    </div>
+    {% endif %}
+    
+    {% unless collection.handle == 'all' %}
+    <h1>{{ collection.title | escape }}</h1>
+    {% if collection.description != '' %}
+        <div class="content-block row">
+            {{ collection.description }}
+        </div><!-- .pagecontent -->
+    {% endif %}
+    {% endunless %}
+</div>
+{% if collection.products.size == 0 %}
+    <div class="sixteen columns">There are no products here.</div>
+{% else %}
+    <div class="productlist">  
+    {% assign countGrils = 0 %}  
+    
+    <!-- Inicializando contador -->
+    {% assign countAux = '' %}
+
+    {% for product in collection.products %}
+        {% if product.tags contains 'Girls' %}            
+            <!-- Incremente pseudocontador -->
+            {% capture temp %}{{ countAux }}*{% endcapture %}
+            {% assign countAux = temp %}
+            {% assign countGrils = countAux.size %} 
+            {% if countGrils < 6 %}           
+                {% include 'product-list-repeatable-item-trend-girls' with product %}
+            {% endif %}            
+        {% endif %}        
+    {% endfor %}
+
+        </div><!-- fim de coluna -->
+    </div> <!-- fim de linha -->
+
+    <div class="sixteen columns row">
+        <div class="mm_trends-center">
+            <a href="/collections/girls" class="mm_trend-link"> See Collection </a>        
+        </div>
+    </div>
+
+
+    {% assign countAux = '' %}
+    {% assign countBoys = 0 %}  
+    {% for product in collection.products %}
+        {% if product.tags contains 'boys' %}            
+            <!-- Incremente pseudocontador -->
+            {% capture temp %}{{ countAux }}*{% endcapture %}
+            {% assign countAux = temp %}
+            {% assign countBoys = countAux.size %}    
+            {% if countBoys < 6 %}          
+                {% include 'product-list-repeatable-item-trend-boys' with product %}
+            {% endif %}                        
+        {% endif %}                    
+    {% endfor %}
+
+            </div><!-- fim de coluna -->
+        </div> <!-- fim de linha -->
+
+    </div><!-- .productlist -->    
+{% endif %}
+
+<div class="sixteen columns row">
+    <div class="mm_trends-center">
+        <a href="/collections/boys" class="mm_trend-link"> See Collection </a>
+    </div>    
+</div>

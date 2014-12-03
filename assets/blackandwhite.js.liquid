@@ -333,14 +333,16 @@ $(function(){
                             $slider.css('height', '');
                             $slider.flexslider({
                                 animation:'{{ settings.mainslider_anim }}',
-                                slideshow:true
+                                slideshow:true,
+                                slideshowSpeed: {{ settings.mainslider_speed }}
                             });
                         //});
                     } else {
                         $slider.css('height', '');
                         $slider.flexslider({
                             animation:'{{ settings.mainslider_anim }}',
-                            slideshow:true
+                            slideshow:true,
+                            slideshowSpeed: {{ settings.mainslider_speed }}
                         });
                     }
                 });
@@ -370,10 +372,10 @@ $(function(){
     //Do certain things differently if touch events are enabled
     if( ! !!('ontouchstart' in window) ? 1 : 0 ) {
         //IF NOT TOUCH
-        
+
         //Scroll-to-top button for long pages
         $(window).scroll(function(){
-            if(window.scrollY > 500) {
+            if($(this).scrollTop() > 500) {
                 $('#scrolltotop').css('bottom', -8);
             } else {
                 $('#scrolltotop').css('bottom', -100);
@@ -384,13 +386,19 @@ $(function(){
             return false;
         });
     
+        var menuItemSelector = 'ul, .multi-column';
+
         //Normal hover nav
-        $('#pageheader nav > ul > li:has(ul, .multi-column)').hover(function () {
-            var $dropdown = $(this).children('ul, .multi-column').stop(true, true);
+        $('#pageheader nav > ul > li:has(' + menuItemSelector + ')').hover(function () {
+            var currentMenuItem = $(this).children(menuItemSelector);
+
+            $('#pageheader nav > ul > li:has(' + menuItemSelector + ')').children(menuItemSelector).not(currentMenuItem).stop().hide();
+
+            var $dropdown = currentMenuItem.stop(true, true);
             resetPosOfDropdown($dropdown);
             $dropdown.fadeIn(100);
         }, function () {
-            $(this).children('ul, .multi-column').stop(true, true).delay(1000).fadeOut(200);
+            $(this).children(menuItemSelector).stop(true, true).delay(500).fadeOut(200);
         });
         
         //Preload all slider images (mobile hides slider, so don't do for that) - prevents browsers from not downloading hidden images
@@ -625,7 +633,7 @@ $(function(){
         var $frm = $(this);
         var errsFound = false;
         $frm.find('.error').remove();
-        $frm.find('input[type!=submit], input[type!=button], input[type!=image], textarea').each(function(){
+        $frm.find('input[type!=submit], input[type!=button], input[type!=image], textarea, select').each(function(){
             if($(this).hasClass('required') && $(this).val() == '') {
                 $frm.prepend($('<p class="error"/>').html($(this).data('fieldname') + ' is required'));
                 errsFound = true;

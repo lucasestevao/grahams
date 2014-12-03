@@ -1,0 +1,69 @@
+{% if these_are_related_products %}
+    {% assign producturl = product-list-repeatable-item-trend-boys.url %}
+{% else %}
+    {% assign producturl = product-list-repeatable-item-trend-boys.url | within: collection %}
+{% endif %}
+
+
+
+{% assign mm_product_class = 'large-3'%}
+{% assign mm_id_product = 'mm_prod-boys-' | append: countBoys %}
+  {% if countBoys == 1 %}    
+    {% capture mm_product_class %}{{ 'mm_trend-left' }}{% endcapture %}    
+    <div class="sixteen columns row">  
+        <div class="mm_trend-area-banner large-7 columns mm_trend-first-line">
+          <h3 class="mm_trend-title-boys">Boys</h3>
+          <div id="mm_trend-banner1-boys" class="mm_no-mobile shadow">                        
+            {% assign mm_collection_image = 'mm_collection_boys_trends01_img.jpg' %}
+            {% include 'mm_collection-banner' with settings.mm_collection_boys_trends01_handle %}
+          </div>      
+        </div>            
+        
+        <div class="large-4 small-12 columns mm_coluna-lateral-kids"> 
+        {% elsif countBoys == 2 %}
+            {% capture mm_product_class %}{{ }}{% endcapture %}            
+          
+          {% elsif countBoys == 3 %}  
+        </div> 
+    </div>
+    <div class="sixteen columns row"> 
+        <div class="large-12 small-12 columns"> 
+            {% capture mm_product_class %}{{ }}{% endcapture %}
+          {% elsif countBoys == 4 %}
+            {% capture mm_product_class %}{{ }}{% endcapture %}
+          {% elsif countBoys == 5 %}
+            {% capture mm_product_class %}{{ }}{% endcapture %}
+        {% elsif countBoys == 6 %}
+    <div class="sixteen columns row">
+        <div class="large-12 small-12 columns"> 
+      
+  {% endif %}
+
+  <div id="{{ mm_id_product }}" class="product {{mm_product_class}} columns">    
+    {{ count }}
+    {% assign product_thumb_size = 'compact' %}
+    <div class="mm_imgcont">        
+            <a href="{{ producturl }}" class="image-inner-wrap">              
+              <img src="{{ product-list-repeatable-item-trend-boys.featured_image | product_img_url: product_thumb_size }}" alt="{{ product-list-repeatable-item-trend-boys.featured_image.alt }}" />
+              {% if settings.mm_ecommerce_en %}{% if product-list-repeatable-item-trend-boys.compare_at_price_max > product-list-repeatable-item-trend-boys.price and settings.prod_sale_mode != 'none' %}
+              <div class="salecontainer"><span class="sale" href="{{ producturl }}">{{ settings.text_sale }}</span></div>
+              {% endif %}{% endif %}
+            </a>
+    </div>
+
+    <p class="title"><a href="{{ producturl }}">{{ product-list-repeatable-item-trend-boys.title }}</a></p>
+    {% comment %}{% unless settings.prod_thumb_desc_chars == '0' %}
+    <a class="desc" href="{{ producturl }}">
+        {% capture proddesc %}{% include 'process-html-strip' with product-list-repeatable-item-trend-boys.description %}{% endcapture %}
+      {{ proddesc | strip_html | truncate: settings.prod_thumb_desc_chars }}
+    </a>
+    {% endunless %}{% endcomment %}
+    
+    {% if settings.mm_ecommerce_en %}
+    <div class="price">
+      {% if product-list-repeatable-item-trend-boys.compare_at_price_max > product-list-repeatable-item-trend-boys.price %}<span class="reducedfrom">{{ product-list-repeatable-item-trend-boys.compare_at_price_max | money }}</span>{% endif %}
+      {% if product-list-repeatable-item-trend-boys.price_varies %}<span class="from">from</span>{% endif %}
+      <span class="actual">{{ product-list-repeatable-item-trend-boys.price | money }}</span>
+    </div>
+    {% endif %}
+</div>

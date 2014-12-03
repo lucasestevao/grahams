@@ -1,8 +1,19 @@
 <fieldset>
-    <legend>CLEAN Theme Settings</legend>
-    <p>Thank you for buying the CLEAN theme by CleanThemes.<br />
-    Need some help? Contact us here: <a href="mailto:shopify@cleanthemes.co.uk">shopify@cleanthemes.co.uk</a><br /><strong>SUPPORT SITE: <a href="http://www.cleanthemes.co.uk/clean/">CLEANTHEMES.CO.UK</a></strong>
+    <legend>MONKEY MOB CLEAN Theme Settings</legend>
+    <p>This is the MONKEY MOB CLEAN theme by Monkey Mob.<br />
+    Need some help? Contact us here: <a href="mailto:contato@monkeymob.com.br">contato@monkeymob.com.br</a><br />
     </p>
+</fieldset>
+
+<fieldset>
+    <legend>Campaigns</legend>
+    <h2>General</h2>
+    <table>
+        <tr>
+            <td><label for="enable_campaign">Enable 'Back to School' campaign</label></td>
+            <td><input type="checkbox" id="enable_campaign" name="enable_campaign" /></td>
+        </tr>
+    </table>
 </fieldset>
 
 <fieldset>
@@ -43,6 +54,13 @@
             <td><input type="file" id="favicon" name="favicon.png" data-max-width="64" data-max-height="64" /></td>
         </tr>
     </table>
+    <h2>Contact Page</h2>
+    <table>
+        <tr>
+            <td><label for="mm_contact_subtitle">Sub Title</label></td>
+            <td><textarea rows="10" id="mm_contact_subtitle" name="mm_contact_subtitle" /></td>
+        </tr>
+    </table>
     <h2>Backgrounds</h2>
     <em><a href="http://cleanthemes.co.uk/clean/adding-backgrounds/" target="_blank">help?</a></em>
     <table>
@@ -51,7 +69,6 @@
             <td>
                 <select name="bg_image_body" id="bg_image_body">
                     <option value="" selected="selected">None</option>
-                    <option value="bg_tile_charcoal.png">Charcoal</option>
                     <option value="bg_tile_colour1.png">Colour 1</option>
                     <option value="bg_tile_colour2.png">Colour 2</option>
                     <option value="bg_tile_dark1.png">Dark 1</option>
@@ -86,7 +103,6 @@
             <td>
                 <select name="bg_image_head" id="bg_image_head">
                     <option value="" selected="selected">None</option>
-                    <option value="bg_tile_charcoal.png">Charcoal</option>
                     <option value="bg_tile_colour1.png">Colour 1</option>
                     <option value="bg_tile_colour2.png">Colour 2</option>
                     <option value="bg_tile_dark1.png">Dark 1</option>
@@ -118,7 +134,6 @@
             <td>
                 <select name="bg_image_foot" id="bg_image_foot">
                     <option value="" selected="selected">None</option>
-                    <option value="bg_tile_charcoal.png">Charcoal</option>
                     <option value="bg_tile_colour1.png">Colour 1</option>
                     <option value="bg_tile_colour2.png">Colour 2</option>
                     <option value="bg_tile_dark1.png">Dark 1</option>
@@ -261,6 +276,13 @@
             <td><input type="text" id="head_padding" name="head_padding" />px</td>
         </tr>
     </table>
+    <h2>Ecommerce</h2>
+    <table>
+        <tr>
+            <td><label for="mm_ecommerce_en"><strong>Caution:</strong> Enable Ecomerce</label></td>
+            <td><input type="checkbox" name="mm_ecommerce_en" id="mm_ecommerce_en" /></td>
+        </tr>
+    </table>
 </fieldset>
 
 <fieldset>
@@ -301,7 +323,7 @@
         </tr>
         <tr>
             <td><label>Column width</label></td>
-            <td><input name="nav_drop_width" value="120"/>px</td>
+            <td><input name="nav_drop_width" value="110"/>px</td>
         </tr>
         <tr>
             <td><label>Justification</label></td>
@@ -637,7 +659,7 @@
         </tr>
         <tr>
             <td><label for="color_form_field_text">Form field text</label></td>
-            <td><input id="color_form_field_text" name="color_form_field_text" class="color" value="#303030"/></td>
+            <td><input id="color_form_field_text" name="color_form_field_text" class="color" value="#696969"/></td>
         </tr>
         <tr>
             <td><label for="color_highlight_hover">Highlighted image hover</label></td>
@@ -660,11 +682,11 @@
         </tr>
         <tr>
             <td><label for="color_body_heading">Body heading</label></td>
-            <td><input id="color_body_heading" name="color_body_heading" class="color" value="#303030"/></td>
+            <td><input id="color_body_heading" name="color_body_heading" class="color" value="#696969"/></td>
         </tr>
         <tr>
             <td><label for="color_body_standard">Body standard</label></td>
-            <td><input id="color_body_standard" name="color_body_standard" class="color" value="#303030"/></td>
+            <td><input id="color_body_standard" name="color_body_standard" class="color" value="#696969"/></td>
         </tr>
         <tr>
             <td><label for="color_body_link">Body links</label></td>
@@ -695,7 +717,7 @@
         </tr>
         <tr>
             <td><label for="color_btn_bg">Standard button background</label></td>
-            <td><input id="color_btn_bg" name="color_btn_bg" class="color" value="#303030"/></td>
+            <td><input id="color_btn_bg" name="color_btn_bg" class="color" value="#696969"/></td>
         </tr>
         <tr>
             <td><label for="color_btn_alt_bg">Alternative button background</label></td>
@@ -811,6 +833,28 @@
             <td><input type="checkbox" name="prod_show_vendor" id="prod_show_vendor" /></td>
         </tr>
     </table>
+    <h3>Gift voucher</h3>
+    <table>
+        <tr>
+            <td><label for="mm_gift_voucher_link_en">Show 'Buy a gift voucher' buttom</label></td>
+            <td><input type="checkbox" name="mm_gift_voucher_link_en" id="mm_gift_voucher_link_en" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_gift_voucher_link">Link for 'Buy a gift voucher'</label></td>
+            <td><input name="mm_gift_voucher_link" id="mm_gift_voucher_link" type="text" value="http://grahamshoes.myshopify.com/pages/gift-voucher" size="60"/></td>
+        </tr>
+    </table>
+    <h3>Where to buy</h3>
+    <table>
+        <tr>
+            <td><label for="mm_where_to_buy_link_en">Show 'Where to buy' buttom</label></td>
+            <td><input type="checkbox" name="mm_where_to_buy_link_en" id="mm_where_to_buy_link_en" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_where_to_buy_link">Link for 'Where to buy'</label></td>
+            <td><input name="mm_where_to_buy_link" id="mm_where_to_buy_link" type="text" value="http://grahamshoes.myshopify.com/pages/store-locator" size="60" /></td>
+        </tr>
+    </table>
     <p class="note">There are two options for showing related products:</p>
     <ul class="indent note">
         <li>Same type: Picks some other products from the same product type.</li>
@@ -864,7 +908,11 @@
         </tr>
         <tr>
             <td><label for="color_slider_text">Overlay text color</label></td>
-            <td><input id="color_slider_text" name="color_slider_text" class="color" value="#303030"/></td>
+            <td><input id="color_slider_text" name="color_slider_text" class="color" value="#696969"/></td>
+        </tr>
+        <tr>
+            <td><label for="mainslider_speed">Slide Speed - Miliseconds</label></td>
+            <td><input id="mainslider_speed" name="mainslider_speed" class="text" value="6000"/></td>
         </tr>
         <tr>
             <td><label for="color_slider_mask">Overlay background color</label><small><em>(white or black works best)</em></small></td>
@@ -1140,8 +1188,19 @@
 </fieldset>
 
 <fieldset>
-    <legend>Women, Men, Girls, Boys</legend>
+    <legend>Women, Men, Girls, Boys, Brands</legend>
     <table>
+        <tr>
+            <td><label for="paging_size">Page number size</label></td>
+            <td>
+                <select name="paging_size" id="paging_size">
+                    <option>12</option>
+                    <option selected="selected">16</option>
+                    <option>18</option>
+                    <option>20</option>
+                </select>
+            </td>
+        </tr>
         <tr>
             <td><label for="mm_products_per_row_coll">Products to show per row</label></td>
             <td>
@@ -1214,6 +1273,10 @@
             <td><label for="mm_collection_women_handle">Women Banner URL</label></td>
             <td><input type="text" id="mm_collection_women_handle" name="mm_collection_women_handle" value="" /></td>
         </tr>
+        <tr>
+            <td><label for="mm_collection_women_alt">Women Banner Alternative Text</label></td>
+            <td><input type="text" id="mm_collection_women_alt" name="mm_collection_women_alt" value="" /></td>
+        </tr>
     </table>
     <h3>Men</h3>
     <table>
@@ -1228,6 +1291,10 @@
         <tr>
             <td><label for="mm_collection_men_handle">Men Banner URL</label></td>
             <td><input type="text" id="mm_collection_men_handle" name="mm_collection_men_handle" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_men_alt">Men Banner Alternative Text</label></td>
+            <td><input type="text" id="mm_collection_men_alt" name="mm_collection_men_alt" value="" /></td>
         </tr>
     </table>
     <h3>Girls</h3>
@@ -1244,6 +1311,10 @@
             <td><label for="mm_collection_girls_handle">Girls Banner URL</label></td>
             <td><input type="text" id="mm_collection_girls_handle" name="mm_collection_girls_handle" value="" /></td>
         </tr>
+        <tr>
+            <td><label for="mm_collection_girls_alt">Girls Banner Alternative Text</label></td>
+            <td><input type="text" id="mm_collection_girls_alt" name="mm_collection_girls_alt" value="" /></td>
+        </tr>
     </table>
     <h3>Boys</h3>
     <table>
@@ -1259,18 +1330,449 @@
             <td><label for="mm_collection_boys_handle">Boys Banner URL</label></td>
             <td><input type="text" id="mm_collection_boys_handle" name="mm_collection_boys_handle" value="" /></td>
         </tr>
+        <tr>
+            <td><label for="mm_collection_boys_alt">Boys Banner Alternative Text</label></td>
+            <td><input type="text" id="mm_collection_boys_alt" name="mm_collection_boys_alt" value="" /></td>
+        </tr>
     </table>
+    <h3>Brands</h3>
+    <table>
+        <tr>
+            <td><label for="mm_collection_brands_en">Brands Banner Enabled</label></td>
+            <td><input type="checkbox" name="mm_collection_brands_en" id="mm_collection_brands_en" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_brands_img">Brands Banner Image</label></td>
+            <td><input type="file" id="mm_collection_brands_img" name="mm_collection_brands_img.jpg"  data-max-width="940" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_brands_handle">Brands Banner URL</label></td>
+            <td><input type="text" id="mm_collection_brands_handle" name="mm_collection_brands_handle" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_brands_alt">Brands Banner Alternative Text</label></td>
+            <td><input type="text" id="mm_collection_brands_alt" name="mm_collection_brands_alt" value="" /></td>
+        </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Trends: Women and Kids</legend>
+    <h2>Women</h2>
+    <h3>First Banner</h3>
+    <table>        
+        <tr>
+            <td><label for="mm_collection_women_trends01_img">First Banner Image</label></td>
+            <td><input type="file" id="mm_collection_women_trends01_img" name="mm_collection_women_trends01_img.jpg"  data-max-width="940" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_women_trends01_handle">First Banner URL</label></td>
+            <td><input type="text" id="mm_collection_women_trends01_handle" name="mm_collection_women_trends01_handle" value="" /></td>
+        </tr>
+    </table>
+    <h3>Second Banner</h3>
+    <table>        
+        <tr>
+            <td><label for="mm_collection_women_trends02_img">Second Banner Image</label></td>
+            <td><input type="file" id="mm_collection_women_trends02_img" name="mm_collection_women_trends02_img.jpg"  data-max-width="940" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_women_trends02_handle">Second Banner URL</label></td>
+            <td><input type="text" id="mm_collection_women_trends02_handle" name="mm_collection_women_trends02_handle" value="" /></td>
+        </tr>
+    </table>
+    <h3>Third Banner</h3>
+    <table>        
+        <tr>
+            <td><label for="mm_collection_women_trends03_img">Third Banner Image</label></td>
+            <td><input type="file" id="mm_collection_women_trends03_img" name="mm_collection_women_trends03_img.jpg"  data-max-width="940" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_women_trends03_handle">Third Banner URL</label></td>
+            <td><input type="text" id="mm_collection_women_trends03_handle" name="mm_collection_women_trends03_handle" value="" /></td>
+        </tr>
+    </table>
+    <h2>Kids</h2>
+    <h3>Boys Banner</h3>
+    <table>        
+        <tr>
+            <td><label for="mm_collection_boys_trends01_img">Boys Banner Image</label></td>
+            <td><input type="file" id="mm_collection_boys_trends01_img" name="mm_collection_boys_trends01_img.jpg"  data-max-width="940" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_boys_trends01_handle">Boys Banner URL</label></td>
+            <td><input type="text" id="mm_collection_boys_trends01_handle" name="mm_collection_boys_trends01_handle" value="" /></td>
+        </tr>
+    </table>
+    <h3>Girls Banner</h3>
+    <table>        
+        <tr>
+            <td><label for="mm_collection_girls_trends01_img">Girls Banner Image</label></td>
+            <td><input type="file" id="mm_collection_girls_trends01_img" name="mm_collection_girls_trends01_img.jpg"  data-max-width="940" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_collection_girls_trends01_handle">Girls Banner URL</label></td>
+            <td><input type="text" id="mm_collection_girls_trends01_handle" name="mm_collection_girls_trends01_handle" value="" /></td>
+        </tr>
+    </table>    
 </fieldset>
 
 <fieldset>
     <legend>Store Locator</legend>
+    <h2>Store 1</h2>
     <table>
-        
+        <tr>
+            <td><label for="mm_storelocator-en-1">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-1" id="mm_storelocator-en-1" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-1">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-1" name="mm_storelocator-name-1" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-1">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-1" name="mm_storelocator-address-1" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-1">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-1" name="mm_storelocator-address-line-1" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-1">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-1" name="mm_storelocator-phone-1" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-1">Women</label><input type="checkbox" name="mm_storelocator-women-1" id="mm_storelocator-women-1" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-1">Men</label><input type="checkbox" name="mm_storelocator-men-1" id="mm_storelocator-men-1" /></td>
+            <td><label for="mm_storelocator-kids-1">Kids</label><input type="checkbox" name="mm_storelocator-kids-1" id="mm_storelocator-kids-1" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-1">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-1" name="mm_storelocator-coord-lat-1" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-1">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-1" name="mm_storelocator-coord-lng-1" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 2</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-2">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-2" id="mm_storelocator-en-2" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-2">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-2" name="mm_storelocator-name-2" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-2">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-2" name="mm_storelocator-address-2" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-2">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-2" name="mm_storelocator-address-line-2" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-2">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-2" name="mm_storelocator-phone-2" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-2">Women</label><input type="checkbox" name="mm_storelocator-women-2" id="mm_storelocator-women-2" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-2">Men</label><input type="checkbox" name="mm_storelocator-men-2" id="mm_storelocator-men-2" /></td>
+            <td><label for="mm_storelocator-kids-2">Kids</label><input type="checkbox" name="mm_storelocator-kids-2" id="mm_storelocator-kids-2" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-2">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-2" name="mm_storelocator-coord-lat-2" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-2">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-2" name="mm_storelocator-coord-lng-2" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 3</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-3">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-3" id="mm_storelocator-en-3" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-3">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-3" name="mm_storelocator-name-3" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-3">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-3" name="mm_storelocator-address-3" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-3">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-3" name="mm_storelocator-address-line-3" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-3">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-3" name="mm_storelocator-phone-3" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-3">Women</label><input type="checkbox" name="mm_storelocator-women-3" id="mm_storelocator-women-3" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-3">Men</label><input type="checkbox" name="mm_storelocator-men-3" id="mm_storelocator-men-3" /></td>
+            <td><label for="mm_storelocator-kids-3">Kids</label><input type="checkbox" name="mm_storelocator-kids-3" id="mm_storelocator-kids-3" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-3">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-3" name="mm_storelocator-coord-lat-3" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-3">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-3" name="mm_storelocator-coord-lng-3" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 4</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-4">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-4" id="mm_storelocator-en-4" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-4">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-4" name="mm_storelocator-name-4" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-4">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-4" name="mm_storelocator-address-4" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-4">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-4" name="mm_storelocator-address-line-4" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-4">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-4" name="mm_storelocator-phone-4" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-4">Women</label><input type="checkbox" name="mm_storelocator-women-4" id="mm_storelocator-women-4" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-4">Men</label><input type="checkbox" name="mm_storelocator-men-4" id="mm_storelocator-men-4" /></td>
+            <td><label for="mm_storelocator-kids-4">Kids</label><input type="checkbox" name="mm_storelocator-kids-4" id="mm_storelocator-kids-4" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-4">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-4" name="mm_storelocator-coord-lat-4" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-4">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-4" name="mm_storelocator-coord-lng-4" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 5</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-5">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-5" id="mm_storelocator-en-5" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-5">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-5" name="mm_storelocator-name-5" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-5">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-5" name="mm_storelocator-address-5" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-5">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-5" name="mm_storelocator-address-line-5" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-5">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-5" name="mm_storelocator-phone-5" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-5">Women</label><input type="checkbox" name="mm_storelocator-women-5" id="mm_storelocator-women-5" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-5">Men</label><input type="checkbox" name="mm_storelocator-men-5" id="mm_storelocator-men-5" /></td>
+            <td><label for="mm_storelocator-kids-5">Kids</label><input type="checkbox" name="mm_storelocator-kids-5" id="mm_storelocator-kids-5" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-5">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-5" name="mm_storelocator-coord-lat-5" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-5">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-5" name="mm_storelocator-coord-lng-5" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 6</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-6">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-6" id="mm_storelocator-en-6" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-6">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-6" name="mm_storelocator-name-6" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-6">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-6" name="mm_storelocator-address-6" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-6">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-6" name="mm_storelocator-address-line-6" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-6">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-6" name="mm_storelocator-phone-6" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-6">Women</label><input type="checkbox" name="mm_storelocator-women-6" id="mm_storelocator-women-6" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-6">Men</label><input type="checkbox" name="mm_storelocator-men-6" id="mm_storelocator-men-6" /></td>
+            <td><label for="mm_storelocator-kids-6">Kids</label><input type="checkbox" name="mm_storelocator-kids-6" id="mm_storelocator-kids-6" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-6">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-6" name="mm_storelocator-coord-lat-6" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-6">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-6" name="mm_storelocator-coord-lng-6" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 7</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-7">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-7" id="mm_storelocator-en-7" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-7">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-7" name="mm_storelocator-name-7" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-7">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-7" name="mm_storelocator-address-7" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-7">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-7" name="mm_storelocator-address-line-7" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-7">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-7" name="mm_storelocator-phone-7" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-7">Women</label><input type="checkbox" name="mm_storelocator-women-7" id="mm_storelocator-women-7" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-7">Men</label><input type="checkbox" name="mm_storelocator-men-7" id="mm_storelocator-men-7" /></td>
+            <td><label for="mm_storelocator-kids-7">Kids</label><input type="checkbox" name="mm_storelocator-kids-7" id="mm_storelocator-kids-7" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-7">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-7" name="mm_storelocator-coord-lat-7" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-7">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-7" name="mm_storelocator-coord-lng-7" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 8</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-8">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-8" id="mm_storelocator-en-8" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-8">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-8" name="mm_storelocator-name-8" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-8">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-8" name="mm_storelocator-address-8" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-8">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-8" name="mm_storelocator-address-line-8" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-8">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-8" name="mm_storelocator-phone-8" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-8">Women</label><input type="checkbox" name="mm_storelocator-women-8" id="mm_storelocator-women-8" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-8">Men</label><input type="checkbox" name="mm_storelocator-men-8" id="mm_storelocator-men-8" /></td>
+            <td><label for="mm_storelocator-kids-8">Kids</label><input type="checkbox" name="mm_storelocator-kids-8" id="mm_storelocator-kids-8" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-8">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-8" name="mm_storelocator-coord-lat-8" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-8">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-8" name="mm_storelocator-coord-lng-8" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 9</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-9">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-9" id="mm_storelocator-en-9" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-9">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-9" name="mm_storelocator-name-9" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-9">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-9" name="mm_storelocator-address-9" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-9">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-9" name="mm_storelocator-address-line-9" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-9">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-9" name="mm_storelocator-phone-9" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-9">Women</label><input type="checkbox" name="mm_storelocator-women-9" id="mm_storelocator-women-9" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-9">Men</label><input type="checkbox" name="mm_storelocator-men-9" id="mm_storelocator-men-9" /></td>
+            <td><label for="mm_storelocator-kids-9">Kids</label><input type="checkbox" name="mm_storelocator-kids-9" id="mm_storelocator-kids-9" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-9">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-9" name="mm_storelocator-coord-lat-9" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-9">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-9" name="mm_storelocator-coord-lng-9" value="" /></td>
+        </tr>
+    </table>
+    <h2>Store 10</h2>
+    <table>
+        <tr>
+            <td><label for="mm_storelocator-en-10">Show on map</label></td>
+            <td><input type="checkbox" name="mm_storelocator-en-10" id="mm_storelocator-en-10" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-name-10">Name</label></td>
+            <td><input type="text" id="mm_storelocator-name-10" name="mm_storelocator-name-10" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-10">Address</label></td>
+            <td><input type="text" id="mm_storelocator-address-10" name="mm_storelocator-address-10" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-address-line-10">Address line 2</label></td>
+            <td><input type="text" id="mm_storelocator-address-line-10" name="mm_storelocator-address-line-10" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-phone-10">Phone</label></td>
+            <td><input type="text" id="mm_storelocator-phone-10" name="mm_storelocator-phone-10" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Products:</label></td>
+            <td><label for="mm_storelocator-women-10">Women</label><input type="checkbox" name="mm_storelocator-women-10" id="mm_storelocator-women-10" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-men-10">Men</label><input type="checkbox" name="mm_storelocator-men-10" id="mm_storelocator-men-10" /></td>
+            <td><label for="mm_storelocator-kids-10">Kids</label><input type="checkbox" name="mm_storelocator-kids-10" id="mm_storelocator-kids-10" /></td>
+        </tr>
+        <tr>
+            <td><label for="mm_storelocator-coord-lat-10">Latitude:</label><input type="text" id="mm_storelocator-coord-lat-10" name="mm_storelocator-coord-lat-10" value="" /></td>
+            <td><label for="mm_storelocator-coord-lng-10">Longitude:</label><input type="text" id="mm_storelocator-coord-lng-10" name="mm_storelocator-coord-lng-10" value="" /></td>
+        </tr>
     </table>
 </fieldset>
 
 <fieldset>
-    <legend>MM Homepage Contents</legend>
+    <legend>Homepage Contents</legend>
     <h2>Link Boxes</h2>
     <table>
         <tr>
@@ -1337,7 +1839,7 @@
 </fieldset>
 
 <fieldset>
-    <legend>MM Homepage Slider</legend>
+    <legend>Homepage Slider</legend>
     <h2>Link Slides</h2>
     <table>
         <tr>
@@ -1348,19 +1850,19 @@
     <h2>Slides</h2>
     <table>
         <tr>
-            <td><label for="maincollection_title">Collection title</label></td>
-            <td><input type="text" id="maincollection_title" name="maincollection_title" value="New Collection" /></td>
+            <td><label for="maincollection_title">Collection Title</label></td>
+            <td><input type="text" id="maincollection_title" name="maincollection_title" value="" /></td>
         </tr>
-     </table>   
+        <tr>
+            <td><label for="maincollection_name">Collection to show</label></td>
+            <td><input type="text" id="maincollection_name" name="maincollection_name" value="" /></td>
+        </tr>
+        <tr>
+            <td><label for="maximum_items_to_show">Maximum itens to show</label></td>
+            <td><input type="text" id="maximum_items_to_show" name="maximum_items_to_show" value="" /></td>
+        </tr>
+     </table>
 </fieldset>
-
-<fieldset>
-    <legend>MM Configs</legend>
-    <p>Thank you for build with MonkeyMob.<br />
-    <br /><strong>SUPPORT SITE: <a href="http://monkeymob.com.br/">monkeymob.com.br</a></strong>
-    </p>
-</fieldset>
-
 
 <fieldset>
     <legend>Widget configuration</legend>
@@ -1595,6 +2097,12 @@
         <tr>
             <td><label for="show_cc_link">Show 'Theme by'</label></td>
             <td><input type="checkbox" name="show_cc_link" id="show_cc_link" /></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td><label for="payment_enabled">Payment Section Enabled (mark it if you want to have any of the options below)</label></td>
+            <td><input type="checkbox" id="payment_enabled" name="payment_enabled" class="checkbox" value="1"/></td>
         </tr>
     </table>
     <h2>Payment icons (check to show in footer)</h2>

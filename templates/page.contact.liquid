@@ -1,73 +1,83 @@
 <div id="crumbs" class="sixteen columns">
-    <a href="/" title="Home">Home</a>
-    &raquo;
-    <a href="{{ page.url }}">{{ page.title }}</a>
+	<a href="/" title="Home">Home</a>
+	&raquo;
+	<a href="{{ page.url }}">{{ page.title }}</a>
 </div><!-- #crumbs -->
 
 {% if settings.show_social_page %}
 <div class="social floating">
-    <span class="label">{{ settings.text_sharethis }}</span>
-    {% include 'social-sharing' %}
+	<span class="label">{{ settings.text_sharethis }}</span>
+	{% include 'social-sharing' %}
 </div>
 {% endif %}
 
-<section class="sixteen columns">
-  <div class="pagesnippetwidget widget">
-    {% include 'process-html' with page.content %}
-    {% form 'contact' %}
-      {% if form.posted_successfully? %}
-        <p class="success-msg">Thanks for contacting us! We'll get back to you as soon as possible.</p>
-      {% endif %}
-      {% if form.errors %}
-        <ul>
-          {% for field in form.errors %}
-          <li class="error">{{ field | replace: 'body','Message' | capitalize }} - {{ form.errors.messages[field] }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    
-      <div class="row">
-        <div class="large-12 columns">
-          <label>Input Label
-            <input type="text" placeholder="large-12.columns" />
-          </label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-4 columns">
-          <label>Input Label
-            <input type="text" placeholder="large-4.columns" />
-          </label>
-        </div>
-        <div class="large-4 columns">
-          <label>Input Label
-            <input type="text" placeholder="large-4.columns" />
-          </label>
-        </div>
-        <div class="large-4 columns">
-          <div class="row collapse">
-            <label>Input Label</label>
-            <div class="small-9 columns">
-              <input type="text" placeholder="small-9.columns" />
-            </div>
-            <div class="small-3 columns">
-              <span class="postfix">.com</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <label>Select Box
-            <select>
-              <option value="husker">Husker</option>
-              <option value="starbuck">Starbuck</option>
-              <option value="hotdog">Hot Dog</option>
-              <option value="apollo">Apollo</option>
-            </select>
-          </label>
-        </div>
-      </div>
-    {% endform %}
-	</div> 
-</section>
+<h1 class="sixteen columns">{{ page.title }}</h1>
+
+<div class="nine columns mm_contact">
+{% form 'contact' %}
+
+	{% if form.posted_successfully? %}
+	  <p class="success-msg">Thanks for contacting us! We'll get back to you as soon as possible.</p>
+	{% endif %}
+
+	{% if form.errors %}
+		<ul>
+		{% for field in form.errors %}
+			<li class="error">{{ field | replace: 'body','Message' | capitalize }} - {{ form.errors.messages[field] }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
+	<div id="mm_contact-subtitle">
+	{{ settings.mm_contact_subtitle }}
+	</div>
+
+	<ul class="formfields">
+		<li class="inputrow">
+			<label for="contact_name" class="hoverlabel">Name</label>
+			<input type="text" data-fieldname="Your name" class="required" id="contact_name" name="contact[name]" value="{{form.name}}" />
+		</li>
+		<li class="inputrow">
+			<label for="contact_email" class="hoverlabel">Email address</label>
+			<input type="email" data-fieldname="Your email" class="required email" id="contact_email" name="contact[email]" value="{{form.email}}" />
+		</li>
+		<li class="inputrow">
+			<label for="contact_phone" class="hoverlabel">Phone number</label>
+			<input type="tel" data-fieldname="Your phone" class="required tel" id="contact_phone" name="contact[phone]" value="{{form.phone}}" />
+		</li>
+		<li class="inputrow">
+			<label for="contact_store" class="hoverlabel">Stores</label>
+				<select data-fieldname="Select a store" class="required" id="contact_store" name="contact[store]">
+				<option {% if form.errors == null %}selected="selected"{% endif %} value="" disabled="disabled">Select a store</option>
+				<option {% if form.store == 'Dublin' %}selected="selected"{% endif %} value="Dublin">Dublin</option>
+				<option {% if form.store == 'Kilkenny' %}selected="selected"{% endif %} value="Kilkenny">Kilkenny</option>
+				<option {% if form.store == 'Naas' %}selected="selected"{% endif %} value="Naas">Naas</option>
+				<option {% if form.store == 'Carlow' %}selected="selected"{% endif %} value="Carlow">Carlow</option>
+				<option {% if form.store == 'Clonmel' %}selected="selected"{% endif %} value="Clonmel">Clonmel</option>
+				<option {% if form.store == 'All' %}selected="selected"{% endif %} value="All">All</option>
+			</select>
+		</li>
+		<li class="inputrow">
+			Send your message to us by this form, please:	
+			<label for="message" class="hidden">Message</label>
+			<textarea id="message" data-fieldname="Your message" class="required" name="contact[body]">{{form.body}}</textarea>
+		</li>
+		<li>
+			<input type="submit" class="button" value="Send" />
+		</li>
+	</ul>
+{% endform %}
+</div>
+
+
+<aside class="six columns offset-by-one widgets mm_contact-aside">
+	<a href="/pages/store-locator" title="Store Locator" id="mm_contact-storelocator-area">
+		<div id="mm_storelocator_panel" class="four columns alpha">
+			<ul class="store-list" >{% for i in (1..10) %}{% include 'mm_store' with i %}{% endfor %}</ul>
+		</div>
+	</a>
+</aside>
+
+<div class="nine columns mm_contact">
+	{% include 'process-html' with page.content %}
+</div>

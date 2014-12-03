@@ -1,0 +1,157 @@
+$(document).ready(function(){
+	var map,
+		mapCanvas = 'mm_storelocator-map-canvas',
+		mapCanvasId = '#'+ mapCanvas,
+		storeItemClass = '.store-item',
+		storeItem_ = '#mm_store_',
+		activeClass = 'active',
+		inactiveClass = 'inactive',
+		dataId = 'id',
+		dataTitle = 'title',
+		dataLat = 'lat',
+		dataLng = 'lng',
+		click = 'click',
+		iconFilterClass = '.mm_icon-legend',
+		zoomSelector = '.zoom.mm_buttom',
+		mwkFalseSelector = '.m-false.w-false.k-false',
+		center = new google.maps.LatLng(53.4608535,-7.7417075),
+		infoWindow = new google.maps.InfoWindow(),
+		stores = $(storeItemClass),
+		markers = [],
+		iconUrl = '{{ "mm_storelocator-marker.png" | asset_url }}';
+
+	function getInfo( id ) {
+		var info,
+			store = $(storeItem_+id);
+
+		info = '<div class="mm_storelocator-marker-info"><h2>'+
+		store.find('.title').text()+'</h2><ul class="features row">'+
+		store.find('.features').html()+'</ul><p>'+
+		store.find('.address').text()+'<br>'+
+		store.find('.address-line').text()+'<br>'+
+		store.find('.telephone').text()+
+		'<br><span class="zoom mm_buttom">Zoom here</span></p></div>';
+
+		return info;
+	}
+
+	function createMarker( id ) {
+		var store = $(storeItem_+id),
+			marker,
+			image = {
+				url: iconUrl,
+				size: new google.maps.Size(32, 32),
+				origin: new google.maps.Point(0,0),
+				anchor: new google.maps.Point(16, 32)
+			},
+			LatLng = new google.maps.LatLng(store.data(dataLat), store.data(dataLng));
+
+		marker = new google.maps.Marker({
+			position: LatLng,
+			map: map,
+			icon: image,
+			title: store.data(dataTitle)
+		});
+
+		google.maps.event.addListener(marker, click, function() {
+			infoWindow.setContent(getInfo(id));
+			infoWindow.open(map, marker);
+			zoomHere(id);
+		});
+
+		return marker;
+	}
+
+	function toggleMarkers() {
+		var i,
+			bounds = new google.maps.LatLngBounds();
+
+		infoWindow.close();
+		$(storeItemClass).removeClass( activeClass );
+
+		stores.each( function(){
+			i = $(this).data(dataId);
+			if ( $(this).filter(mwkFalseSelector).length ) {
+				markers[i].setVisible(false);
+			} else {
+				markers[i].setVisible(true);
+				bounds.extend(markers[i].getPosition());
+				map.fitBounds(bounds);
+			}
+		});
+
+		map.setZoom(8);
+	}
+
+	function zoomHere( id ) {
+		$(zoomSelector).on(click, function(){
+			map.setCenter(markers[id].getPosition());
+			map.setZoom(17);
+		});
+	}
+
+	function filter( object ) {
+		object.toggleClass( inactiveClass );
+		switch(object.attr(dataId)) {
+			case 'mm_men':
+				$(storeItemClass).filter('.m-true').toggleClass( 'm-false' );
+				toggleMarkers();
+				break ;
+			case 'mm_women':
+				$(storeItemClass).filter('.w-true').toggleClass( 'w-false' );
+				toggleMarkers();
+				break;
+			case 'mm_kids':
+				$(storeItemClass).filter('.k-true').toggleClass( 'k-false' );
+				toggleMarkers();
+				break;
+			default:
+				break;
+		}
+	}
+
+	function selectStore( object ) {
+		window.location = mapCanvasId;
+
+		var id = object.data(dataId);
+
+		infoWindow.setContent(getInfo(id));
+		infoWindow.open(map, markers[id]);
+		zoomHere(id);
+
+		$(storeItemClass).removeClass( activeClass );
+		object.toggleClass( activeClass );
+
+		map.setCenter(markers[id].getPosition());
+		map.setZoom(9);
+	}
+
+	function initialize() {
+		var i,
+			bounds = new google.maps.LatLngBounds(),
+			mapOptions = {
+				zoom: 7,
+				center: center,
+				mapTypeControl: false
+			};
+
+		map = new google.maps.Map(document.getElementById(mapCanvas), mapOptions);
+
+		stores.each( function(){
+			i = $(this).data(dataId);
+			markers[i] = createMarker(i);
+			bounds.extend(markers[i].getPosition());
+		});
+
+		$(storeItemClass).on(click, function(){
+			selectStore( $(this) );
+		});
+
+		$(iconFilterClass).on(click,  function(){
+			filter( $(this) );
+		});
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+});

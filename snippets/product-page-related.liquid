@@ -1,7 +1,7 @@
 {% unless settings.rel_product_method == 'none' %}
 {% assign these_are_related_products = true %}
-<div class="productlist">
-    {% assign numberOfRelatedToShow = '8' %}
+<div class="productlist mm_productlist-related">
+    {% assign numberOfRelatedToShow = '4' %}
     {% if settings.rel_product_method == 'related' %}
         <!-- Products which have a matching related tag e.g. 3 products (including this one) all containing a tag 'related-group1' -->
         {% assign count = 0 %}
@@ -10,8 +10,10 @@
             {% assign tagmatch = 0 %}
             {% for reltag in related_product.tags %}
                 {% capture relremoved %}{{ reltag | remove_first: 'related-' }}{% endcapture %}
-                {% if relremoved != reltag and count != numberOfRelatedToShow and related_product.handle != product-page-related.handle %}
+                {% if count != numberOfRelatedToShow and related_product.handle != product-page-related.handle %}
+                    {% comment %}<div>{{count}}: {{relremoved}} != {{reltag}}</div> {% endcomment %}
                     {% for currprodtag in product-page-related.tags %}
+                        {% comment %}<div>{{test}}: {{currprodtag}} == {{reltag}} ?</div>{% endcomment %}
                         {% if currprodtag == reltag %}
                             {% assign tagmatch = 1 %}
                         {% endif %}
@@ -20,8 +22,8 @@
             {% endfor %}
             {% if tagmatch == 1 %}
                 {% capture count %}{{ count | plus: 1 }}{% endcapture %}
-                {% if count == '1' %}<h2 class="sixteen columns">Related products</h2>{% endif %}
-                {% include 'product-list-repeatable-item' with related_product %}
+                {% if count == '1' %}<h2 class="mm_h2">You may also like</h2>{% endif %}
+                {% include 'product-list-repeatable-item-related' with related_product %}
             {% endif %}
         {% endfor %}
         {% endpaginate %}
@@ -34,8 +36,8 @@
         {% for related_product in collections.all.products %}
             {% if related_product.type == product-page-related.type and related_product.handle != product-page-related.handle and count != numberOfRelatedToShow %}
                 {% capture count %}{{ count | plus: 1 }}{% endcapture %}
-                {% if count == '1' %}<h2 class="sixteen columns">Related products</h2>{% endif %}
-                {% include 'product-list-repeatable-item' with related_product %}
+                {% if count == '1' %}<h2 class="sixteen columns">You may also like</h2>{% endif %}
+                {% include 'product-list-repeatable-item-related' with related_product %}
             {% endif %}
         {% endfor %}
         {% endpaginate %}

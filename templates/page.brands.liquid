@@ -1,0 +1,25 @@
+
+
+{% if settings.show_social_page %}
+<div class="social floating">
+    <span class="label">{{ settings.text_sharethis }}</span>
+    {% include 'social-sharing' %}
+</div>
+{% endif %}
+
+<div class="sixteen columns mm_justify">
+	  <div class="mm_collection_banner">
+        {% assign mm_collection_image = 'mm_collection_brands_img.jpg' %}
+        {% assign mm_collection_image_alt = settings.mm_collection_brands_alt %}
+        {% include 'mm_collection-banner' with settings.mm_collection_brands_handle %}
+    </div>
+    <h2 class='mm_h2'>{{ page.title }}</h2>
+    <div id="crumbs" class="sixteen columns">
+      <a href="/" title="Home">Home</a>
+      &raquo;
+      <a href="{{ page.url }}">{{ page.title }}</a>
+  	</div><!-- #crumbs -->
+  	<div id="mm_brands">
+    	{% include 'process-html' with page.content %}
+    </div>
+</div>

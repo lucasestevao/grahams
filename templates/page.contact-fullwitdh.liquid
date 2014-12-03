@@ -34,7 +34,7 @@
           {% endfor %}
           </ul>
       {% endif %}
-      
+      {{form}}
       <div class="mm_form_contact">
         <div class="mm_linha ten columns">
           <div class="mm_campo two columns">
@@ -53,11 +53,11 @@
         <div class="mm_linha ten columns">
           <div class="mm_campo five columns">
               <label for="contact_email" class="hoverlabel">Email Address</label>
-              <input type="email" data-fieldname="Your email" class="required fullwidth" id="contact_email" class="email" name="contact[email]" value="{{form.email}}" />
+              <input type="email" data-fieldname="Your email" class="required fullwidth email" id="contact_email" name="contact[email]" value="{{form}}" />
           </div>
           <div class="mm_campo four columns ">
               <label for="contact_telephone" class="hoverlabel">Telephone</label>
-              <input type="tel" data-fieldname="Your telephone number" class="required tel fullwidth" id="contact_telephone" class="tel" name="contact[telephone_number]" value="{{form.telephone_number}}" />
+              <input type="tel" data-fieldname="Your telephone number" class="required tel fullwidth" id="contact_telephone" name="contact[telephone_number]" value="{{form.telephone_number}}" />
           </div>
         </div>
 
